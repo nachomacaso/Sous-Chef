@@ -1,0 +1,6 @@
+<h1>Virtual Pantry</h1>
+<ul>
+<% @pantry_ingredients.each do |pantry_ingredient| %>
+  <li><%= pantry_ingredient.ingredient.name %></li>
+<% end %>
+</ul>

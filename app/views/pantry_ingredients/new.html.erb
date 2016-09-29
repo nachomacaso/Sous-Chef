@@ -1,0 +1,9 @@
+<h1>Add Ingredient To Pantry</h1>
+
+<%= form_tag '/pantry', method: :post do %>
+  <div>
+    <%= label_tag :name, 'Name: ' %>
+    <%= text_field_tag :name, nil %>
+  </div>
+  <%= submit_tag 'Add To Pantry' %>
+<% end %>
