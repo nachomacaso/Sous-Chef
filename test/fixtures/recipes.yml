@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cook_book_id: 1
+  rating: 1
+  name: MyString
+
+two:
+  cook_book_id: 1
+  rating: 1
+  name: MyString

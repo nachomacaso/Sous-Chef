@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   patch '/pantry/:id' => 'pantry_ingredients#update'
   delete '/pantry/:id' => 'pantry_ingredients#destroy'
 
+  get '/recipes' => 'recipe_ingredients#index'
+
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 

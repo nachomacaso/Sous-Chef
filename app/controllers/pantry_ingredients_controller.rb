@@ -8,13 +8,13 @@ class PantryIngredientsController < ApplicationController
   end
 
   def create
-    ingredient = Ingredient.find_or_create_by
-    @pantry_ingredient = PantryIngredient.create(user_id: current_user.id,
-                                                 ingredient_id: params[:id])
-                                                 # add measurement
-    if @pantry_ingredient.save
-      Ingredient.create(name: params[:name])
+    ingredient = Ingredient.find_or_create_by(name: params[:name])
 
+    @pantry_ingredient = PantryIngredient.create(user_id: current_user.id,
+                                                 ingredient_id: ingredient.id,
+                                                 measurement: params[:measurement])
+
+    if @pantry_ingredient.save
       flash[:success] = 'Successfully added a new ingredient!'
       redirect_to '/pantry'
     else
@@ -28,15 +28,15 @@ class PantryIngredientsController < ApplicationController
   end
 
   def edit
-    @pantry_ingredient = PantryIngredient.find(params[:id]) 
+    @pantry_ingredient = PantryIngredient.find(params[:id])
   end
 
   def update
     @pantry_ingredient = PantryIngredient.find(params[:id])
-    # @pantry_ingredient.update()
-    # edit when we want to change measurements
-    # flash[:success] = 'Successfully added a new ingredient!'
-    # redirect_to '/pantry'
+    @pantry_ingredient.update(measurement: params[:measurement])
+
+    flash[:success] = 'Successfully updated ingredient!'
+    redirect_to '/pantry'
   end
 
   def destroy
