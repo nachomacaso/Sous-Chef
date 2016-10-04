@@ -1,6 +1,6 @@
 <h1>Ingredient</h1>
 
-<h3>Ingredient: <%= @pantry_ingredient.ingredient.name %></h3>
+<h3><%= @pantry_ingredient.ingredient.name %></h3>
 <h4>Amount: <%= @pantry_ingredient.measurement %></h4>
 
 <%= link_to 'Delete', "/pantry/#{@pantry_ingredient.id}", method: :delete %>

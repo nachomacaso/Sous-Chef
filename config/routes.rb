@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   delete '/pantry/:id' => 'pantry_ingredients#destroy'
 
   get '/recipes' => 'recipe_ingredients#index'
+  get '/recipes/:id' => 'recipe_ingredients#show'
+
+  get '/cookbook' => 'cook_books#index'
+  post '/cookbook' => 'cook_books#create'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

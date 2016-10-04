@@ -1,6 +1,13 @@
 <h1>Matching Recipes</h1>
 
-<% @recipes.each do |recipe| %>
-  <%= recipe.name %>
+<h2>You have the ingredients for: </h2>
+<% @green_recipes.each do |green| %>
+  <a href="/recipes/<%= green.id %>"><%= green.name %></a>
+  <br>
+<% end %>
+
+<h2>You need a couple more ingredients for: </h2>
+<% @yellow_recipes.each do |yellow| %>
+  <a href="/recipes/<%= yellow.id %>"><%= yellow.name %></a>
   <br>
 <% end %>
