@@ -1,19 +1,21 @@
 class CookBooksController < ApplicationController
   def index
-    cook_book_recipes = Recipe.uniq.pluck(:cook_book_id)
-
-    @user_cook_books = Recipe.where(cook_book_id: cook_book_recipes)
+    user_cook_book_id = CookBook.find_by(user_id: current_user.id)
+    @user_cook_books = Recipe.where(cook_book_id: user_cook_book_id)
   end
 
-  def create
-    @cook_book = CookBook.create(user_id: current_user.id)
+  def update
+    user_cookbook = CookBook.find_by(user_id: current_user.id)
 
-    if @cook_book.save
+    @recipe = Recipe.find(params[:id])
+    user_saved_recipe = @recipe.update(cook_book_id: nil)
+
+    if user_saved_recipe
       flash[:success] = 'Successfully added a new recipe to cook book!'
       redirect_to '/cookbook'
     else
       flash[:danger] = 'Recipe not saved!'
-      render '/recipes'
+      redirect_to '/recipes'
     end
   end
 end

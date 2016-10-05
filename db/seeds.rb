@@ -15,6 +15,8 @@ Ingredient.create!([
   {name: "Onion"},
   {name: "Tomato"},
   {name: "Potato"},
+  {name: "Green Pepper"},
+  {name: "Carrots"},
   {name: "Lemon"},
   {name: "Apple"},
   {name: "Spagetti"},
@@ -23,9 +25,7 @@ Ingredient.create!([
   {name: "Ground Beef"},
   {name: "Chicken Breast"},
   {name: "Pork Shoulder"},
-  {name: "Cubed Steak"},
-  {name: "Green Pepper"},
-  {name: "Carrots"}
+  {name: "Cubed Steak"}
 ])
 PantryIngredient.create!([
   {ingredient_id: 1, user_id: 1, measurement: 2},
@@ -53,6 +53,44 @@ PantryIngredient.create!([
   {ingredient_id: 23, user_id: 1, measurement: 7},
   {ingredient_id: 24, user_id: 1, measurement: 7},
   {ingredient_id: 25, user_id: 1, measurement: 7}
+])
+Category.create!([
+  {type: "Spices"},
+  {type: "Herbs"},
+  {type: "Vegetables"},
+  {type: "Fruit"},
+  {type: "Meat"},
+  {type: "Miscellaneous"}
+])
+CategoryIngredient.create!([
+  {category_id: 1, ingredient_id: 3},
+  {category_id: 1, ingredient_id: 4},
+  {category_id: 1, ingredient_id: 5},
+  {category_id: 1, ingredient_id: 6},
+  {category_id: 1, ingredient_id: 7},
+  {category_id: 2, ingredient_id: 9},
+  {category_id: 2, ingredient_id: 10},
+  {category_id: 2, ingredient_id: 11},
+  {category_id: 3, ingredient_id: 12},
+  {category_id: 3, ingredient_id: 13},
+  {category_id: 3, ingredient_id: 14},
+  {category_id: 3, ingredient_id: 15},
+  {category_id: 3, ingredient_id: 16},
+  {category_id: 3, ingredient_id: 17},
+  {category_id: 3, ingredient_id: 18},
+  {category_id: 4, ingredient_id: 19},  
+  {category_id: 4, ingredient_id: 20},
+  {category_id: 5, ingredient_id: 24},
+  {category_id: 5, ingredient_id: 25},
+  {category_id: 5, ingredient_id: 26},
+  {category_id: 5, ingredient_id: 27},
+  {category_id: 6, ingredient_id: 1},
+  {category_id: 6, ingredient_id: 2},
+  {category_id: 6, ingredient_id: 8},
+  {category_id: 6, ingredient_id: 21},
+  {category_id: 6, ingredient_id: 22},
+  {category_id: 6, ingredient_id: 23}
+
 ])
 Recipe.create!([
   {cook_book_id: 1, rating: 5, name: "Chicken and Potatoes"},

@@ -1,6 +1,7 @@
 <h1><%= current_user.name.titleize %>'s Virtual Pantry</h1>
 <ul>
 <% @pantry_ingredients.each do |pantry_ingredient| %>
+  <% if pantry_ingredient. %>
   <li><a href="/pantry/<%= pantry_ingredient.id %>"> <%= pantry_ingredient.measurement %> <%= pantry_ingredient.ingredient.name %></a></li>
 <% end %>
 </ul>

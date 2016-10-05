@@ -6,4 +6,8 @@
 <% end %>
 </ul>
 
-<%= link_to 'Add To Cook Book', "/cookbook", method: :post %>
+<% if @user_saved_recipe %>
+  <%= link_to 'Remove From Cook Book', "/cookbook", method: :patch %>
+<% else %>
+  <%= link_to 'Add To Cook Book', "/recipes/#{@recipe.id}", method: :patch %>
+<% end %>

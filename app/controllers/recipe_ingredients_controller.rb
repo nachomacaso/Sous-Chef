@@ -3,6 +3,7 @@ class RecipeIngredientsController < ApplicationController
     pantry_ingredients = PantryIngredient.pluck(:ingredient_id)
     recipe_ingredients = RecipeIngredient.where(ingredient_id: pantry_ingredients)
     matching_ingredients = recipe_ingredients.map(&:recipe_id) # same as { |recipes_ingredient| recipes_ingredient.recipe_id }
+
     green_light_recipes = []
     green_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 7 }.uniq
     @green_recipes = Recipe.where(id: green_light_recipes)
@@ -15,6 +16,22 @@ class RecipeIngredientsController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
 
-    @pantry_ingredients = PantryIngredient.pluck(:ingredient_id)
+    user_cookbook = CookBook.find_by(user_id: current_user.id)
+    @user_saved_recipe = @recipe.update(cook_book_id: user_cookbook.id)
+  end
+
+  def update
+    user_cookbook = CookBook.find_by(user_id: current_user.id)
+
+    @recipe = Recipe.find(params[:id])
+    user_saved_recipe = @recipe.update(cook_book_id: user_cookbook.id)
+
+    if user_saved_recipe
+      flash[:success] = 'Successfully added a new recipe to cook book!'
+      redirect_to '/cookbook'
+    else
+      flash[:danger] = 'Recipe not saved!'
+      redirect_to '/recipes'
+    end
   end
 end

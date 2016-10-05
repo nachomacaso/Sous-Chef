@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/' => 'recipe_ingredients#index'
+
   get '/pantry' => 'pantry_ingredients#index'
   get '/pantry/new' => 'pantry_ingredients#new'
   post '/pantry' => 'pantry_ingredients#create'
@@ -9,14 +11,15 @@ Rails.application.routes.draw do
 
   get '/recipes' => 'recipe_ingredients#index'
   get '/recipes/:id' => 'recipe_ingredients#show'
+  patch '/recipes/:id' => 'recipe_ingredients#update'
 
   get '/cookbook' => 'cook_books#index'
-  post '/cookbook' => 'cook_books#create'
+  patch '/cookbook' => 'cook_books#update'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
   get '/login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 end
