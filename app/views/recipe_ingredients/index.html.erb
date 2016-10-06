@@ -1,13 +1,25 @@
 <h1>Matching Recipes</h1>
 
-<h2>You have the ingredients for: </h2>
-<% @green_recipes.each do |green| %>
-  <a href="/recipes/<%= green.id %>"><%= green.name %></a>
-  <br>
+<% unless @green_recipes.empty? %>
+  <h3>You have the ingredients for: </h3>
+  <% @green_recipes.each do |green| %>
+    <a href="/recipes/<%= green.id %>"><%= green.name %></a>
+    <br>
+  <% end %>
 <% end %>
 
-<h2>You need a couple more ingredients for: </h2>
-<% @yellow_recipes.each do |yellow| %>
-  <a href="/recipes/<%= yellow.id %>"><%= yellow.name %></a>
-  <br>
+<% unless @yellow_recipes.empty? %>
+  <h3>You need a couple more ingredients for: </h3>
+  <% @yellow_recipes.each do |yellow| %>
+    <a href="/recipes/<%= yellow.id %>"><%= yellow.name %></a>
+    <br>
+  <% end %>
+<% end %>
+
+<% unless @red_recipes.empty? %>
+  <h3>You need to go grocery shopping for: </h3>
+  <% @red_recipes.each do |red| %>
+    <a href="/recipes/<%= red.id %>"><%= red.name %></a>
+    <br>
+  <% end %>
 <% end %>

@@ -9,8 +9,12 @@ class RecipeIngredientsController < ApplicationController
     @green_recipes = Recipe.where(id: green_light_recipes)
 
     yellow_light_recipes = []
-    yellow_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 2 && matching_ingredients.count(x) < 7 }.uniq
+    yellow_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 2 && matching_ingredients.count(x) < 8 }.uniq
     @yellow_recipes = Recipe.where(id: yellow_light_recipes)
+
+    red_light_recipes = []
+    red_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 1 && matching_ingredients.count(x) < 3 }.uniq
+    @red_recipes = Recipe.where(id: red_light_recipes)
   end
 
   def create
@@ -34,7 +38,11 @@ class RecipeIngredientsController < ApplicationController
     @recipe = Recipe.find(params[:id])
     user_cookbook = CookBook.find_by(user_id: current_user.id)
 
-    CookBookRecipe.where("cook_book_id = ? AND recipe_id = ?", user_cookbook.id, @recipe.id)
+    if CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", user_cookbook.id, @recipe.id)
+      @contained_in_cook_book = true
+    else
+      @contained_in_cook_book = false
+    end
   end
 
   def destroy

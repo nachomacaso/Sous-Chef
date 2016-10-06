@@ -1,11 +1,16 @@
 <h1><%= @recipe.name %></h1>
 
 <ul>
-<% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-  <li><%= recipe_ingredient.measurement %> <%= recipe_ingredient.ingredient.name %></li>
-<% end %>
+  <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <li><%= recipe_ingredient.measurement %> <%= recipe_ingredient.ingredient.name %></li>
+  <% end %>
 </ul>
 
-<% if @user.saved_recipe %>
+<h4>Directions</h4>
+<p><%= @recipe.directions %></p>
+
+<% if @contained_in_cook_book == true %>
   <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe.id}", method: :delete %>
+<% else %>
   <%= link_to 'Add To Cook Book', "/recipes/#{@recipe.id}", method: :post %>
+<% end %>
