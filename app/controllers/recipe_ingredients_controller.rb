@@ -13,22 +13,38 @@ class RecipeIngredientsController < ApplicationController
     @yellow_recipes = Recipe.where(id: yellow_light_recipes)
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
+  def create
+    recipe = Recipe.find(params[:id])
+    cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
-    user_cookbook = CookBook.find_by(user_id: current_user.id)
-    @user_saved_recipe = @recipe.update(cook_book_id: user_cookbook.id)
-  end
+    @user_saved_recipe = CookBookRecipe.create(recipe_id: recipe.id,
+                                               cook_book_id: cookbook.id,
+                                               rating: params[:rating])
 
-  def update
-    user_cookbook = CookBook.find_by(user_id: current_user.id)
-
-    @recipe = Recipe.find(params[:id])
-    user_saved_recipe = @recipe.update(cook_book_id: user_cookbook.id)
-
-    if user_saved_recipe
+    if @user_saved_recipe
       flash[:success] = 'Successfully added a new recipe to cook book!'
       redirect_to '/cookbook'
+    else
+      flash[:danger] = 'Recipe not saved!'
+      redirect_to '/recipes'
+    end
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+    user_cookbook = CookBook.find_by(user_id: current_user.id)
+
+    CookBookRecipe.where("cook_book_id = ? AND recipe_id = ?", user_cookbook.id, @recipe.id)
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    user_removed_cookbook = CookBookRecipe.find_by(recipe_id: recipe.id)
+    user_removed_cookbook.destroy
+
+    if user_removed_cookbook
+      flash[:success] = 'Successfully added a new recipe to cook book!'
+      redirect_to "/cookbook"
     else
       flash[:danger] = 'Recipe not saved!'
       redirect_to '/recipes'

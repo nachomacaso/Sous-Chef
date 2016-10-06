@@ -54,54 +54,16 @@ PantryIngredient.create!([
   {ingredient_id: 24, user_id: 1, measurement: 7},
   {ingredient_id: 25, user_id: 1, measurement: 7}
 ])
-Category.create!([
-  {type: "Spices"},
-  {type: "Herbs"},
-  {type: "Vegetables"},
-  {type: "Fruit"},
-  {type: "Meat"},
-  {type: "Miscellaneous"}
-])
-CategoryIngredient.create!([
-  {category_id: 1, ingredient_id: 3},
-  {category_id: 1, ingredient_id: 4},
-  {category_id: 1, ingredient_id: 5},
-  {category_id: 1, ingredient_id: 6},
-  {category_id: 1, ingredient_id: 7},
-  {category_id: 2, ingredient_id: 9},
-  {category_id: 2, ingredient_id: 10},
-  {category_id: 2, ingredient_id: 11},
-  {category_id: 3, ingredient_id: 12},
-  {category_id: 3, ingredient_id: 13},
-  {category_id: 3, ingredient_id: 14},
-  {category_id: 3, ingredient_id: 15},
-  {category_id: 3, ingredient_id: 16},
-  {category_id: 3, ingredient_id: 17},
-  {category_id: 3, ingredient_id: 18},
-  {category_id: 4, ingredient_id: 19},  
-  {category_id: 4, ingredient_id: 20},
-  {category_id: 5, ingredient_id: 24},
-  {category_id: 5, ingredient_id: 25},
-  {category_id: 5, ingredient_id: 26},
-  {category_id: 5, ingredient_id: 27},
-  {category_id: 6, ingredient_id: 1},
-  {category_id: 6, ingredient_id: 2},
-  {category_id: 6, ingredient_id: 8},
-  {category_id: 6, ingredient_id: 21},
-  {category_id: 6, ingredient_id: 22},
-  {category_id: 6, ingredient_id: 23}
-
-])
 Recipe.create!([
-  {cook_book_id: 1, rating: 5, name: "Chicken and Potatoes"},
-  {cook_book_id: 1, rating: 5, name: "Pot Roast"},
-  {cook_book_id: 1, rating: 5, name: "Spagetti and Meatballs"},
-  {cook_book_id: 1, rating: 5, name: "Pork Stew"},
-  {cook_book_id: 1, rating: 5, name: "Chicken Alfredo"},
-  {cook_book_id: 1, rating: 5, name: "Smothered Chicken"},
-  {cook_book_id: 1, rating: 5, name: "Chicken Fried Steak"},
-  {cook_book_id: 1, rating: 5, name: "Swedish Meatballs"},
-  {cook_book_id: 1, rating: 5, name: "Pork Roast and Potatoes"}
+  {name: "Chicken and Potatoes"},
+  {name: "Pot Roast"},
+  {name: "Spagetti and Meatballs"},
+  {name: "Pork Stew"},
+  {name: "Chicken Alfredo"},
+  {name: "Smothered Chicken"},
+  {name: "Chicken Fried Steak"},
+  {name: "Swedish Meatballs"},
+  {name: "Pork Roast and Potatoes"}
 ])
 RecipeIngredient.create!([
   {recipe_id: 1, ingredient_id: 1, measurement: 2},
@@ -139,4 +101,10 @@ RecipeIngredient.create!([
 ])
 User.create!([
   {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO"}
+])
+CookBook.create!([
+  {user_id: 1}
+])
+CookBookRecipe.create!([
+  {recipe_id: 1, cook_book_id: 1, rating: 5}
 ])
