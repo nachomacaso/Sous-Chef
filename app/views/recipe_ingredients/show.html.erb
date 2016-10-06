@@ -10,6 +10,8 @@
 <p><%= @recipe.directions %></p>
 
 <% if @contained_in_cook_book == true %>
+  <h4>User Rating: <%= @user_cookbook.rating %> Stars</h4>
+  <br>
   <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe.id}", method: :delete %>
 <% else %>
   <%= link_to 'Add To Cook Book', "/recipes/#{@recipe.id}", method: :post %>

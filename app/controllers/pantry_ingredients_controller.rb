@@ -1,10 +1,9 @@
 class PantryIngredientsController < ApplicationController
   def index
-    @pantry_ingredients = PantryIngredient.all
+    @pantry_ingredients = PantryIngredient.where(user_id: current_user.id)
   end
 
   def new
-    @pantry_ingredient = PantryIngredient.new
   end
 
   def create
@@ -24,7 +23,8 @@ class PantryIngredientsController < ApplicationController
   end
 
   def show
-    @pantry_ingredient = PantryIngredient.find(params[:id])
+    pantry = PantryIngredient.find(params[:id])
+    @pantry_ingredient = PantryIngredient.find_by("user_id = ? AND ingredient_id = ?", current_user.id, pantry.ingredient_id)
   end
 
   def edit

@@ -1,6 +1,6 @@
 class RecipeIngredientsController < ApplicationController
   def index
-    pantry_ingredients = PantryIngredient.pluck(:ingredient_id)
+    pantry_ingredients = PantryIngredient.where(user_id: current_user.id).pluck(:ingredient_id)
     recipe_ingredients = RecipeIngredient.where(ingredient_id: pantry_ingredients)
     matching_ingredients = recipe_ingredients.map(&:recipe_id) # same as { |recipes_ingredient| recipes_ingredient.recipe_id }
 
@@ -36,9 +36,11 @@ class RecipeIngredientsController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    user_cookbook = CookBook.find_by(user_id: current_user.id)
+    cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
-    if CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", user_cookbook.id, @recipe.id)
+    @user_cookbook = CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", cookbook.id, @recipe.id)
+
+    if @user_cookbook
       @contained_in_cook_book = true
     else
       @contained_in_cook_book = false
