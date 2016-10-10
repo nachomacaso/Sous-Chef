@@ -1,5 +1,13 @@
 <h1>Matching Recipes</h1>
 
+<%= @ingredients_per_recipe %>
+<%= @pantry_ingredients_per_recipe %>
+<%= @percent_completed %>
+
+<%= @green_light_recipes  %>
+<%= @yellow_light_recipes %>
+<%= @red_light_recipes %>
+
 <% unless @green_recipes.empty? %>
   <h3>You have the ingredients for: </h3>
   <% @green_recipes.each do |green| %>

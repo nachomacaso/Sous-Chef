@@ -1,19 +1,38 @@
 class RecipeIngredientsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    pantry_ingredients = PantryIngredient.where(user_id: current_user.id).pluck(:ingredient_id)
-    recipe_ingredients = RecipeIngredient.where(ingredient_id: pantry_ingredients)
-    matching_ingredients = recipe_ingredients.map(&:recipe_id) # same as { |recipes_ingredient| recipes_ingredient.recipe_id }
+    recipes = Recipe.all
+
+    ingredients_per_recipe = {}
+    recipes.each do |recipe|
+      ingredients_per_recipe[recipe.id] = recipe.recipe_ingredients.count
+    end
+
+    user_pantry_ingredient_ids = PantryIngredient.where(user_id: current_user.id).pluck(:ingredient_id)
+
+    pantry_ingredients_per_recipe = {}
+    recipes.each do |recipe|
+      pantry_ingredients_per_recipe[recipe.id] = recipe.recipe_ingredients.where(ingredient_id: user_pantry_ingredient_ids).count
+    end
+
+    percent_completed = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count.to_f / recipe_ingredient_count) }
 
     green_light_recipes = []
-    green_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 7 }.uniq
-    @green_recipes = Recipe.where(id: green_light_recipes)
-
     yellow_light_recipes = []
-    yellow_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 2 && matching_ingredients.count(x) < 8 }.uniq
-    @yellow_recipes = Recipe.where(id: yellow_light_recipes)
-
     red_light_recipes = []
-    red_light_recipes << matching_ingredients.select { |x| matching_ingredients.count(x) > 1 && matching_ingredients.count(x) < 3 }.uniq
+    percent_completed.each do |recipe_id, percent_complete|
+      if percent_complete == 1
+        green_light_recipes << recipe_id
+      elsif percent_complete >= 0.75 && percent_complete < 1
+        yellow_light_recipes << recipe_id
+      elsif percent_complete < 0.75
+        red_light_recipes << recipe_id
+      end
+    end
+        
+    @green_recipes = Recipe.where(id: green_light_recipes)
+    @yellow_recipes = Recipe.where(id: yellow_light_recipes)
     @red_recipes = Recipe.where(id: red_light_recipes)
   end
 
@@ -53,10 +72,10 @@ class RecipeIngredientsController < ApplicationController
     user_removed_cookbook.destroy
 
     if user_removed_cookbook
-      flash[:success] = 'Successfully added a new recipe to cook book!'
+      flash[:success] = 'Successfully removed recipe from cook book!'
       redirect_to "/cookbook"
     else
-      flash[:danger] = 'Recipe not saved!'
+      flash[:danger] = 'Recipe not removed!'
       redirect_to '/recipes'
     end
   end

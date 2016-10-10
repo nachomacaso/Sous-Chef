@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       flash[:success] = 'Successfully logged in!'
-      redirect_to '/'
+      redirect_to '/recipes'
     else
       flash[:danger] = 'Incorrect Email or Password.'
       redirect_to '/login'
