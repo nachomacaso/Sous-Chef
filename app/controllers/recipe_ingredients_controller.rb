@@ -18,6 +18,8 @@ class RecipeIngredientsController < ApplicationController
 
     percent_completed = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count.to_f / recipe_ingredient_count) }
 
+    @missing_ingredients = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count -  recipe_ingredient_count) }
+
     green_light_recipes = []
     yellow_light_recipes = []
     red_light_recipes = []

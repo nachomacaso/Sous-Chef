@@ -3,10 +3,12 @@ CookBook.create!([
   {user_id: 2}
 ])
 CookBookRecipe.create!([
-  {recipe_id: 1, cook_book_id: 1, rating: 5},
   {recipe_id: 3, cook_book_id: 1, rating: 4},
   {recipe_id: 2, cook_book_id: 1, rating: 3},
-  {recipe_id: 1, cook_book_id: 2, rating: nil}
+  {recipe_id: 1, cook_book_id: 2, rating: 5},
+  {recipe_id: 4, cook_book_id: 2, rating: 4},
+  {recipe_id: 6, cook_book_id: 2, rating: 3},
+  {recipe_id: 5, cook_book_id: 2, rating: 2}
 ])
 Ingredient.create!([
   {name: "Butter"},
