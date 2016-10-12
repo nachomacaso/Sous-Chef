@@ -17,7 +17,7 @@
 .byebug_history
 
 # Ignore 'node_modules'
-/node_modules
+/node_modules/cylon
 
 # Ignore application configuration
 /config/application.yml
