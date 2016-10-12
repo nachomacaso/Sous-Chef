@@ -2,6 +2,25 @@ class RecipeIngredientsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @response = Unirest.get("https://community-food2fork.p.mashape.com/search?key=#{ ENV["food2fork_key"] }&page=#{@url_string}",
+                            headers: { "X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    @recipes = @response["recipes"]
+
+    @url_string = ""
+    user_pantry_ingredients = PantryIngredient.where(user_id: current_user.id)
+    @array_length = user_pantry_ingredients.length
+    counter = 0
+    user_pantry_ingredients.each do |user_pantry_ingredient|
+      counter += 1
+      if counter == @array_length
+        @url_string = @url_string + user_pantry_ingredient.ingredient.name
+      else
+        @url_string = @url_string + user_pantry_ingredient.ingredient.name + "%2"
+      end
+    end
+    @url_string = @url_string.squish.downcase.tr(' ', '+')
+
     recipes = Recipe.all
 
     ingredients_per_recipe = {}
@@ -18,7 +37,7 @@ class RecipeIngredientsController < ApplicationController
 
     percent_completed = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count.to_f / recipe_ingredient_count) }
 
-    @missing_ingredients = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count -  recipe_ingredient_count) }
+    # @missing_ingredients = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count -  recipe_ingredient_count) }
 
     green_light_recipes = []
     yellow_light_recipes = []
