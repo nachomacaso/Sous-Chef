@@ -2,11 +2,6 @@ class RecipeIngredientsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @response = Unirest.get("https://community-food2fork.p.mashape.com/search?key=#{ ENV["food2fork_key"] }&page=#{@url_string}",
-                            headers: { "X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
-
-    @recipes = @response["recipes"]
-
     @url_string = ""
     user_pantry_ingredients = PantryIngredient.where(user_id: current_user.id)
     @array_length = user_pantry_ingredients.length
@@ -14,51 +9,44 @@ class RecipeIngredientsController < ApplicationController
     user_pantry_ingredients.each do |user_pantry_ingredient|
       counter += 1
       if counter == @array_length
-        @url_string = @url_string + user_pantry_ingredient.ingredient.name
+        @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase
       else
-        @url_string = @url_string + user_pantry_ingredient.ingredient.name + "%2"
+        @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase + '%2C'
       end
     end
-    @url_string = @url_string.squish.downcase.tr(' ', '+')
+    @url_string = @url_string.squish.tr(' ', '+')
 
-    recipes = Recipe.all
+    @recipes = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=true&ingredients=#{@url_string}&limitLicense=true&number=1000&ranking=1",
+                           headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
 
-    ingredients_per_recipe = {}
-    recipes.each do |recipe|
-      ingredients_per_recipe[recipe.id] = recipe.recipe_ingredients.count
-    end
+    @green_light_recipes = []
+    @yellow_light_recipes = []
+    @red_light_recipes = []
 
-    user_pantry_ingredient_ids = PantryIngredient.where(user_id: current_user.id).pluck(:ingredient_id)
-
-    pantry_ingredients_per_recipe = {}
-    recipes.each do |recipe|
-      pantry_ingredients_per_recipe[recipe.id] = recipe.recipe_ingredients.where(ingredient_id: user_pantry_ingredient_ids).count
-    end
-
-    percent_completed = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count.to_f / recipe_ingredient_count) }
-
-    # @missing_ingredients = ingredients_per_recipe.merge(pantry_ingredients_per_recipe){ |key, recipe_ingredient_count, pantry_ingredient_count| (pantry_ingredient_count -  recipe_ingredient_count) }
-
-    green_light_recipes = []
-    yellow_light_recipes = []
-    red_light_recipes = []
-    percent_completed.each do |recipe_id, percent_complete|
-      if percent_complete == 1
-        green_light_recipes << recipe_id
-      elsif percent_complete >= 0.75 && percent_complete < 1
-        yellow_light_recipes << recipe_id
-      elsif percent_complete < 0.75
-        red_light_recipes << recipe_id
+    @recipes.each do |recipe|
+      if recipe["missedIngredientCount"].zero?
+        @green_light_recipes << recipe
+        @green_light_recipes = @green_light_recipes[0..10]
+      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) >= 0.5
+        @yellow_light_recipes << recipe
+        @yellow_light_recipes = @yellow_light_recipes[0..10]
+      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) < 0.5 && (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) > 0.25
+        @red_light_recipes << recipe
+        @red_light_recipes = @red_light_recipes[0..10]
       end
     end
-        
-    @green_recipes = Recipe.where(id: green_light_recipes)
-    @yellow_recipes = Recipe.where(id: yellow_light_recipes)
-    @red_recipes = Recipe.where(id: red_light_recipes)
   end
 
   def create
-    recipe = Recipe.find(params[:id])
+    @recipe = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/information?includeNutrition=false",
+                          headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    @directions = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/analyzedInstructions?stepBreakdown=true",
+                              headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    recipe = Recipe.find_or_create_by(name: @recipe["title"],
+                                      directions: @recipe["instructions"])
+
     cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
     @user_saved_recipe = CookBookRecipe.create(recipe_id: recipe.id,
@@ -75,10 +63,18 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/information?includeNutrition=false",
+                          headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    @recipe_ingredients = @recipe["extendedIngredients"]
+
+    @directions = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/analyzedInstructions?stepBreakdown=true",
+                              headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    # @recipe = Recipe.find(params[:id])
     cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
-    @user_cookbook = CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", cookbook.id, @recipe.id)
+    @user_cookbook = CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", cookbook.id, @recipe["id"])
 
     if @user_cookbook
       @contained_in_cook_book = true

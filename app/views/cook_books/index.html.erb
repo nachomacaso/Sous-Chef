@@ -1,7 +1,0 @@
-<h1><%= current_user.name.titleize %>'s Cook Book</h1>
-
-<ul>
-<% @user_cook_books.each do |cook_book| %>
-  <li><a href="/recipes/<%= cook_book.id %>"><%= cook_book.name %></a></li>
-<% end %>
-</ul>
