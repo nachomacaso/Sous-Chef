@@ -24,15 +24,21 @@ class RecipeIngredientsController < ApplicationController
     @red_light_recipes = []
 
     @recipes.each do |recipe|
-      if recipe["missedIngredientCount"].zero?
-        @green_light_recipes << recipe
-        @green_light_recipes = @green_light_recipes[0..10]
-      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) >= 0.5
-        @yellow_light_recipes << recipe
-        @yellow_light_recipes = @yellow_light_recipes[0..10]
+      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length < 5
+        unless recipe["image"].nil?
+          @green_light_recipes << recipe
+          @green_light_recipes = @green_light_recipes.sample(9)
+        end
+      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["missedIngredientCount"])) >= 0.75 && recipe["missedIngredients"].length < 10
+        unless recipe["image"].nil? 
+          @yellow_light_recipes << recipe
+          @yellow_light_recipes = @yellow_light_recipes.sample(9)
+        end
       elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) < 0.5 && (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) > 0.25
-        @red_light_recipes << recipe
-        @red_light_recipes = @red_light_recipes[0..10]
+        unless recipe["image"].nil?
+          @red_light_recipes << recipe
+          @red_light_recipes = @red_light_recipes.sample(9)
+        end
       end
     end
   end
@@ -40,17 +46,14 @@ class RecipeIngredientsController < ApplicationController
   def create
     @recipe = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/information?includeNutrition=false",
                           headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+    cook_book_recipe = Recipe.find_or_create_by(name: @recipe["title"],
+                                                directions: @recipe["instructions"],
+                                                spoonacular_id: @recipe["id"])
 
-    @directions = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/analyzedInstructions?stepBreakdown=true",
-                              headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+    user_cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
-    recipe = Recipe.find_or_create_by(name: @recipe["title"],
-                                      directions: @recipe["instructions"])
-
-    cookbook = CookBook.find_or_create_by(user_id: current_user.id)
-
-    @user_saved_recipe = CookBookRecipe.create(recipe_id: recipe.id,
-                                               cook_book_id: cookbook.id,
+    @user_saved_recipe = CookBookRecipe.create(recipe_id: cook_book_recipe.id,
+                                               cook_book_id: user_cookbook.id,
                                                rating: params[:rating])
 
     if @user_saved_recipe
@@ -71,12 +74,11 @@ class RecipeIngredientsController < ApplicationController
     @directions = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/analyzedInstructions?stepBreakdown=true",
                               headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
 
-    # @recipe = Recipe.find(params[:id])
     cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 
-    @user_cookbook = CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", cookbook.id, @recipe["id"])
-
-    if @user_cookbook
+    user_recipe = Recipe.find_by(spoonacular_id: @recipe["id"])
+    if user_recipe
+      @user_cookbook = CookBookRecipe.find_by("cook_book_id = ? AND recipe_id = ?", cookbook.id, user_recipe.id)
       @contained_in_cook_book = true
     else
       @contained_in_cook_book = false
@@ -84,7 +86,7 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def destroy
-    recipe = Recipe.find(params[:id])
+    recipe = Recipe.find_by(spoonacular_id: params[:id])
     user_removed_cookbook = CookBookRecipe.find_by(recipe_id: recipe.id)
     user_removed_cookbook.destroy
 

@@ -1,8 +1,12 @@
-<h1>Edit ingredient</h1>
+<h1>Edit <%= @pantry_ingredient.ingredient.name %></h1>
 <%= form_tag "/pantry/#{@pantry_ingredient.id}", method: :patch do %>
   <div>
-    <%= label_tag :measurement %>
-    <%= text_field_tag :measurement %>
+    <%= label_tag :amount %>
+    <%= text_field_tag :amount %>
+  </div>
+  <div>
+    <%= label_tag :measurement_id, 'Unit: ' %>
+    <%= collection_select :measurement, :measurement_id, Measurement.all, :id, :unit %>
   </div>
   <%= submit_tag 'Submit' %>
 <% end %>

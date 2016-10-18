@@ -1,4 +1,4 @@
 <h1><%= current_user.name.titleize %>'s Cook Book</h1>
 <% @cook_book_recipes.each do |cook_book_recipe| %>
-  <a href="/recipes/<%= cook_book_recipe.recipe.id %>"><%= cook_book_recipe.recipe.name %></a>
+  <a href="/recipes/<%= cook_book_recipe.recipe.spoonacular_id %>"><%= cook_book_recipe.recipe.name %></a>
 <% end %>

@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010203906) do
+ActiveRecord::Schema.define(version: 20161018011423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "aisle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cook_book_recipes", force: :cascade do |t|
-    t.integer  "recipe_id"
     t.integer  "cook_book_id"
     t.integer  "rating"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "recipe_id"
   end
 
   create_table "cook_books", force: :cascade do |t|
@@ -31,6 +37,13 @@ ActiveRecord::Schema.define(version: 20161010203906) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  create_table "measurements", force: :cascade do |t|
+    t.string   "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,24 +51,27 @@ ActiveRecord::Schema.define(version: 20161010203906) do
   create_table "pantry_ingredients", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "measurement"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "measurement_id"
+    t.decimal  "amount",         precision: 5, scale: 2
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
-    t.integer  "measurement"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "measurement_id"
+    t.decimal  "amount",         precision: 5, scale: 2
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "directions"
+    t.integer  "spoonacular_id"
   end
 
   create_table "users", force: :cascade do |t|

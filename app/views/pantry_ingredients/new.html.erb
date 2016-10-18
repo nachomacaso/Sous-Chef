@@ -6,8 +6,16 @@
     <%= text_field_tag :name, nil %>
   </div>
   <div>
-    <%= label_tag :measurement, 'Measurement: ' %>
-    <%= text_field_tag :measurement, nil %>
+    <%= label_tag :category_id, 'Category: ' %>
+    <%= collection_select :category, :category_id, Category.all, :id, :aisle %>
+  </div>
+  <div>
+    <%= label_tag :amount, 'Amount: ' %>
+    <%= text_field_tag :amount, nil %>
+  </div>
+  <div>
+    <%= label_tag :measurement_id, 'Unit: ' %>
+    <%= collection_select :measurement, :measurement_id, Measurement.all, :id, :unit %>
   </div>
   <%= submit_tag 'Add To Pantry' %>
 <% end %>
