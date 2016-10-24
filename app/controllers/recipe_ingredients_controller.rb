@@ -1,5 +1,7 @@
 class RecipeIngredientsController < ApplicationController
   before_action :authenticate_user!
+  def home
+  end
 
   def index
     @url_string = ""
@@ -21,23 +23,18 @@ class RecipeIngredientsController < ApplicationController
 
     @green_light_recipes = []
     @yellow_light_recipes = []
-    @red_light_recipes = []
 
     @recipes.each do |recipe|
-      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length < 5
+      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length < 3
         unless recipe["image"].nil?
           @green_light_recipes << recipe
-          @green_light_recipes = @green_light_recipes.sample(9)
+          @green_light_recipes = @green_light_recipes.sample(8)
         end
-      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["missedIngredientCount"])) >= 0.75 && recipe["missedIngredients"].length < 10
+      elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.75 && recipe["missedIngredients"].length <= 5
         unless recipe["image"].nil? 
           @yellow_light_recipes << recipe
-          @yellow_light_recipes = @yellow_light_recipes.sample(9)
-        end
-      elsif (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) < 0.5 && (recipe["usedIngredientCount"].to_f / (recipe["usedIngredientCount"] + recipe["usedIngredientCount"])) > 0.25
-        unless recipe["image"].nil?
-          @red_light_recipes << recipe
-          @red_light_recipes = @red_light_recipes.sample(9)
+          @yellow_light_recipes = @yellow_light_recipes.sample(8)
+          @yellow_missing = recipe["missedIngredients"].length
         end
       end
     end
@@ -48,7 +45,8 @@ class RecipeIngredientsController < ApplicationController
                           headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
     cook_book_recipe = Recipe.find_or_create_by(name: @recipe["title"],
                                                 directions: @recipe["instructions"],
-                                                spoonacular_id: @recipe["id"])
+                                                spoonacular_id: @recipe["id"],
+                                                image: @recipe["image"])
 
     user_cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 

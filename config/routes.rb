@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/' => 'recipe_ingredients#index'
+  get '/' => 'recipe_ingredients#home'
 
   get '/pantry' => 'pantry_ingredients#index'
   get '/pantry/new' => 'pantry_ingredients#new'

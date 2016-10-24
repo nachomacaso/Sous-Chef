@@ -1,15 +1,150 @@
-<h1><%= current_user.name.titleize %>'s Virtual Pantry</h1>
-<ul>
-<% @pantry_ingredients.each do |pantry_ingredient| %>
-  <li>
-  <a href="/pantry/<%= pantry_ingredient.id %>">
-  <% if pantry_ingredient.amount > 1 %>
-    <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
-  <% else %>
-    <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
-  <% end %>
-  <%= pantry_ingredient.ingredient.name %>    
-  </a>
-  </li>
-<% end %>
-</ul>
+<!-- Virtual Panty section starts -->
+<section id="our-menu">
+  <div class="container">  
+    <h2>Virtual Pantry</h2>
+    <div class="menu-table">
+    <!-- Menu tabs -->
+      <ul class="nav nav-tabs  menu-tabs" role="tablist">
+        <li class="active">
+          <a href="#meat" aria-controls="meat" role="tab" data-toggle="tab" class="icon icon-home"><span>Meat</span></a>
+        </li>
+        <li>
+          <a href="#produce" aria-controls="produce" role="tab" data-toggle="tab">Produce</a>
+        </li>
+        <li>
+          <a href="#spices" aria-controls="spices" role="tab" data-toggle="tab">Spices</a>
+        </li>
+        <li>
+          <a href="#eggsdairy" aria-controls="eggsdairy" role="tab" data-toggle="tab">Eggs & Dairy</a>
+        </li>
+        <li>
+          <a href="#miscellaneous" aria-controls="miscellaneous" role="tab" data-toggle="tab">Miscellaneous</a>
+        </li>
+      </ul>
+
+      <!-- Menu Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active fade in" id="meat">
+          <div class="row">
+            <div class="menu-group">
+              <div class="menu-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="menu-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 9 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                        <% if pantry_ingredient.amount > 1 %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
+                        <% else %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
+                        <% end %>
+                        <%= pantry_ingredient.ingredient.name %>    
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade " id="produce">
+          <div class="row">
+            <div class="menu-group">
+              <div class="menu-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="menu-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 5 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                        <% if pantry_ingredient.amount > 1 %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
+                        <% else %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
+                        <% end %>
+                        <%= pantry_ingredient.ingredient.name %>    
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade " id="spices">
+          <div class="row">
+            <div class="menu-group">
+              <div class="menu-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="menu-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 3 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                          <% if pantry_ingredient.amount > 1 %>
+                            <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
+                          <% else %>
+                            <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
+                          <% end %>
+                          <%= pantry_ingredient.ingredient.name %>    
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade " id="eggsdairy">
+          <div class="row">
+            <div class="menu-group">
+              <div class="menu-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="menu-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 1 || pantry_ingredient.ingredient.category_id == 8 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                        <% if pantry_ingredient.amount > 1 %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
+                        <% else %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
+                        <% end %>
+                        <%= pantry_ingredient.ingredient.name %>    
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade " id="miscellaneous">
+          <div class="row">
+            <div class="menu-group">
+              <div class="menu-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="menu-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 2 || pantry_ingredient.ingredient.category_id == 4 || pantry_ingredient.ingredient.category_id == 6 || pantry_ingredient.ingredient.category_id == 7 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                        <% if pantry_ingredient.amount > 1 %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit.pluralize %> 
+                        <% else %>
+                          <%= pantry_ingredient.amount %> <%= pantry_ingredient.measurement.unit %> 
+                        <% end %>
+                        <%= pantry_ingredient.ingredient.name %>    
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> <!-- Virtual Pantry section ends -->

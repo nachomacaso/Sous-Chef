@@ -1,68 +1,147 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MidnightSnackApp</title>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Sous Chef - Allez Cuisine</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-  </head>
+    <!-- Bootstrap (Framework) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
 
-  <body>
+    <!-- Full Screen Background Slides -->
+    <link rel="stylesheet" href="js/superslides/superslides.css">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/recipes">Midnight Snack</a>
+
+    <!-- Lightbox -->
+    <link href='js/simplelightbox/simplelightbox.css' rel='stylesheet' type='text/css'>
+
+    <!-- Masonry grid Layout -->
+    <link rel="stylesheet" href="js/jQuery-flexImages/jquery.flex-images.css">
+
+    <!-- Off Canvas Navigation -->
+    <link type="text/css" href="js/pushy/pushy.css" rel="stylesheet" />
+
+    <!-- Prasto Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Favicon
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+        <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- Preloader
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+
+    <!-- Primary Page Layout
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- Off canvas menu starts -->
+    <div class="off-canvas-menu">
+      <a class="menu-btn" id="hamburger"><span></span></a>
+      <nav class="pushy pushy-right main-menu">
+        <a class="close-btn menu-btn"><i class="icon icon-cross"></i></a>
+        <a class="brand" href="#home"><img src="images/logo.png" alt="" class="img-responsive"></a>
+        <ul class="list-unstyled menu-items" id="menu-items">
+          <li class="pushy-link"><a href="/">Home</a></li>
+          <li class="pushy-link"><a href="/recipes">Recipes</a></li>
+          <li class="pushy-link"><a href="/cookbook">Cook Book</a></li>
+          <li class="pushy-link"><a href="/pantry">Pantry</a></li>
+          <li class="pushy-link"><a href="/pantry/new">Add Ingredient</a></li>
+          <li role="seperator" class="divider"></li>
           <% if current_user %>
-            <a class="navbar-text">Welcome, <%= current_user.name.titleize %> !</a>
+            <li><%= link_to 'Log Out', '/logout', method: :delete %></a></li>
+          <% else %>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/login">Log In</a></li>
           <% end %>
+        </ul>
+
+        <div class="social clearfix">
+          <a href=""><i class="icon icon-facebook"></i></a>
+          <a href=""><i class="icon icon-twitter"></i></a>
+          <a href=""><i class="icon icon-google-plus"></i></a>
+          <a href=""><i class="icon icon-instagram"></i></a>
+
         </div>
+      </nav>
+    </div> <!-- Off canvas menu ends -->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-              <% if current_user %>
-                <li><%= link_to 'Log Out', '/logout', method: :delete %></a></li>
-              <% else %>
-                <li><a href="/signup">Sign Up</a></li>
-                <li><a href="/login">Log In</a></li>
-              <% end %>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+    <!-- Site Overlay -->
+    <div class="site-overlay"></div>
 
-    <ul class="nav nav-tabs">
-      <li role="presentation"><a href="/pantry">Virtual Pantry</a></li>
-      <li role="presentation"><a href="/pantry/new">Add Ingredients</a></li>
-      <li role="presentation"><a href="/recipes">Recipes</a></li>
-      <li role="presentation"><a href="/cookbook">Cook Book</a></li>
-    </ul>
-
-    <% flash.each do |name, message| %>
-      <div>
-        <div class="alert alert-<%=name %> alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= message %>
-      </div>
-    <% end %>
+    <!-- Main body starts -->
+    <div id="container">
 
     <%= yield %>
 
-  </body>
+        <!-- Footer starts -->
+        <footer>
+            <div class="container">
+                <p>© Copyright 2016 Sous-Chef. All Rights Reserved.</p>
+            </div>
+        </footer> <!-- Footer ends -->
+    </div> <!-- Main body ends -->
+
+    <!-- Javascripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- Jquery library -->
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+
+    <!-- Bootstrap (Framework) -->
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <!-- Full Screen Background Slides -->
+    <script src="js/superslides/jquery.superslides.min.js"></script>
+
+    <!-- Fullscreen Background video -->
+    <script src="js/vide/jquery.vide.js"></script>
+
+     <!-- Lightbox -->
+    <script src="js/simplelightbox/simple-lightbox.min.js"></script>
+
+    <!-- Masonry grid Layout -->
+    <script src="js/jQuery-flexImages/jquery.flex-images.min.js"></script>
+
+    <!-- Off Canvas Navigation -->
+    <script type="text/javascript" src="js/pushy/pushy.js"></script>
+
+    <!-- Smooth one page scroll -->
+    <script src="js/jquery-one-page-nav/jquery.nav.js"></script>
+
+    <!-- Prasto plugins -->
+    <script src="js/main.js"></script>
+
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
 </html>

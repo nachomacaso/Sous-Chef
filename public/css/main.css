@@ -1,0 +1,840 @@
+/* ==========================================================================
+   Prasto Modern Restaurant Html Template V1.2
+   ========================================================================== 
+*/
+
+/* Preloader Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#preloader {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#fff; /* change if the mask should have another color then white */
+    z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    border: 3px solid #333;
+    border-radius: 40px;
+    height: 40px;
+    left: 50%;
+    margin: -20px 0 0 -20px;
+    opacity: 0;
+    top: 50%;
+    width: 40px;
+    z-index: 1007;
+    -webkit-animation: pulsate 1s ease-out infinite;
+    -moz-animation: pulsate 1s ease-out infinite;
+    -ms-animation: pulsate 1s ease-out infinite;
+    -o-animation: pulsate 1s ease-out infinite;
+    animation: pulsate 1s ease-out infinite;
+    position:absolute;
+    left:50%; /* centers the loading animation horizontally one the screen */
+    top:50%; /* centers the loading animation vertically one the screen */
+    margin:-20px 0 0 -20px; /* is width and height divided by two */
+}
+
+/* Page Layout Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@font-face {
+    font-family: GreatVibes-Regular;
+    src: url(../fonts/GreatVibes-Regular.ttf);
+}
+
+
+/* Basic
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+body {
+    font-family: 'Roboto', "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+button {
+    font-family: 'Roboto', "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: #757575;
+}
+
+h2 {
+    font-family: GreatVibes-Regular;
+    font-size: 50px;
+    display: block;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* Font icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@font-face {
+  font-family: "prasto-font-icons";
+  src:url("../fonts/prasto-font-icons.eot");
+  src:url("../fonts/prasto-font-icons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/prasto-font-icons.woff") format("woff"),
+    url("../fonts/prasto-font-icons.ttf") format("truetype"),
+    url("../fonts/prasto-font-icons.svg#prasto-font-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "prasto-font-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "prasto-font-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook:before {
+  content: "\e000";
+}
+.icon-twitter:before {
+  content: "\e001";
+}
+.icon-google-plus:before {
+  content: "\e002";
+}
+.icon-instagram:before {
+  content: "\e003";
+}
+.icon-user:before {
+  content: "\e004";
+}
+.icon-envelope:before {
+  content: "\e005";
+}
+.icon-phone:before {
+  content: "\e006";
+}
+.icon-date:before {
+  content: "\e007";
+}
+.icon-clock:before {
+  content: "\e008";
+}
+.icon-restaurant:before {
+  content: "\e009";
+}
+.icon-cross:before {
+  content: "\e00a";
+}
+
+/* Main Menu Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.main-menu {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.brand img {
+    display: inline-block;
+}
+
+.main-menu {
+    box-shadow: none;
+    background: #131312;
+}
+
+.menu-items{
+    margin-top: 20px;
+}
+
+.pushy li a{
+    padding:10px 30px;
+}
+
+.pushy a{
+    border:none;
+}
+
+.pushy a:hover {
+    background: none;
+}
+
+.main-menu li a {
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.main-menu li a:hover {
+    background: #212121;
+}
+
+#hamburger {
+    box-sizing: border-box;
+    display: block;
+    width: 70px;
+    height: 45px;
+    top: 30px;
+    right: 30px;
+    position: fixed;
+    z-index: 4;
+    cursor: pointer;
+    -webkit-transition: right 0.4s ease;
+    -moz-transition: right 0.4s ease;
+    -ms-transition: right 0.4s ease;
+    -o-transition: right 0.4s ease;
+    transition: right 0.4s ease;
+}
+
+.pushy-active #hamburger {
+    right: 325px;
+    z-index: 9999;
+}
+
+#hamburger:before,
+#hamburger:after,
+#hamburger span {
+    background: #e8e8e8;
+    content: '';
+    display: block;
+    width: 28px;
+    height: 3px;
+    position: absolute;
+    left: 20px;
+    border-radius: 4px;
+}
+
+#hamburger:before {
+    top: 10px;
+}
+
+#hamburger span {
+    top: 20px;
+}
+
+#hamburger:after {
+    top: 30px;
+}
+
+/* Hamburger animation */
+#hamburger:before,
+#hamburger:after,
+#hamburger span {
+    -webkit-transition: none 0.2s ease 0.2s;
+    transition: none 0.2s ease 0.2s;
+    -webkit-transition-property: transform, top, bottom, left, opacity;
+    transition-property: transform, top, bottom, left, opacity;
+}
+
+.pushy-active #hamburger:before,
+.pushy-active #hamburger:after {
+    top: 20px;
+}
+
+.pushy-active #hamburger span {
+    opacity: 0;
+}
+
+.pushy-active #hamburger:before {
+    transform: rotate( 45deg );
+}
+
+.pushy-active #hamburger:after {
+    transform: rotate( -45deg );
+}
+
+.pushy {
+    width: 300px;
+    right: -400px;
+}
+
+.pushy-right {
+    -webkit-transform: translate3d(300px,0,0);
+    -moz-transform: translate3d(300px,0,0);
+    -ms-transform: translate3d(300px,0,0);
+    -o-transform: translate3d(300px,0,0);
+    transform: translate3d(300px,0,0);
+    right: 0;
+}
+
+.pushy-open {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.container-push, .push-push {
+    -webkit-transform: translate3d(-200px,0,0);
+    -moz-transform: translate3d-(-200px,0,0);
+    -ms-transform: translate3d(-200px,0,0);
+    -o-transform: translate3d(-200px,0,0);
+    transform: translate3d(-200px,0,0);
+}
+
+.pushy, #container, .push {
+    -webkit-transition: -webkit-transform 0.4s ease;
+    -moz-transition: -moz-transform 0.4s ease;
+    -ms-transition: -ms-transform 0.4s ease;
+    -o-transition: -o-transform 0.4s ease;
+    transition: transform 0.4s ease;
+}
+
+.social{
+    width: 135px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.social a{
+    display:inline-block;
+    float:left;
+    padding:5px;
+    border:none;
+    font-size: 23px;
+}
+
+.social a:hover{
+    background:none;
+    color:#fff;
+}
+
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display:none !important;
+    cursor:pointer;
+}
+
+/* Banner Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#home {
+    color: #fff;
+    text-align: center;
+}
+
+#home h2 {
+    font-size: 70px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.slides .btn-primary{
+    margin-top: 20px;
+}
+
+.slides-pagination {
+    display: none;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 70%;
+    margin-top: -240px;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px;
+}
+
+#home p {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.video-overlay {
+    background: #000 url(../images/brilliant.png);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    opacity: 0.3;
+    top: 0;
+}
+
+#home .btn-primary{
+    margin-top: 20px;
+}
+
+/* About Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#about {
+    background: #fafafa;
+    position: relative;
+}
+
+#about h3 {
+    font-family: 'Roboto', sans-serif;
+    border-bottom: #d4d4d4 1px solid;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.history {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 600px;
+}
+
+.photo-container{
+        position: absolute;
+    height: 100%;
+    top: 0px;
+    left:0;
+}
+
+.background-image-holder{
+   background: url(../images/chef.jpg) 50% 0% no-repeat;
+    width: 425px;
+    height: 100%;
+    z-index: 0;
+    background-size: cover !important;
+    top: -20%;
+}
+.divider-background {
+    background-size: cover !important;
+    overflow: hidden;
+}
+
+
+/* Our Menu Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#our-menu h2 {
+    text-align: center;
+    display: block;
+}
+
+#our-menu {
+    background: #161615 url(../images/barbeque-bg.jpg) no-repeat;
+    padding: 50px 0;
+    color: #fff;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+#our-menu h3 {
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.menu-tabs {
+    border-bottom: 2px solid #DDD;
+    margin: 0 0 40px 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: none;
+    text-align: center;
+}
+
+.menu-tabs > li.active > a,
+.menu-tabs > li.active > a:focus,
+.menu-tabs > li.active > a:hover {
+    border-width: 0;
+}
+
+.menu-tabs > li > a {
+    border: none;
+    color: #666;
+}
+
+.menu-tabs > li.active > a,
+.menu-tabs > li > a:hover {
+    border: none;
+    color: #fff !important;
+    background: transparent;
+}
+
+.menu-tabs > li > a::after {
+    content: "";
+    background: #fff;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+    transition: all 250ms ease 0s;
+    transform: scale(0);
+}
+
+.menu-tabs > li.active > a::after,
+.menu-tabs > li:hover > a::after {
+    transform: scale(1);
+}
+
+.menu-tabs li,
+.menu-tabs li a {
+    display: inline-block;
+}
+
+.menu-tabs li {
+    float: none;
+}
+
+.menu-tabs>li.active>a,
+.menu-tabs>li.active>a:hover,
+.menu-tabs>li.active>a:focus {
+    background: none;
+    color: #fff;
+}
+
+.menu-tabs li a {
+    color: #D2D2D2;
+    border-radius: 0;
+    display: inline-block;
+    margin: 0 6px;
+}
+
+.menu-group-item {
+    margin-bottom: 20px;
+}
+
+.menu-item-price {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.menu-title {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin: 5px 0;
+}
+
+.menu-descp {
+    color: #868686;
+}
+
+
+/* Gallery Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#gallery {
+    padding: 50px 0;
+    background: #0C0C0C;
+    color: #fff;
+}
+
+#gallery h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sl-wrapper .sl-counter, .sl-wrapper .sl-close, .sl-wrapper .sl-navigation button{
+    color:#fff;
+}
+
+.sl-overlay{
+    background:#000;
+}
+
+.sl-spinner{
+    border-color:#e8e8e8;
+}
+
+figure.item{
+    background:#000;
+
+}
+figure.item img {
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+}
+
+figure.item:hover img {
+    opacity: 0.5;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
+/* Cookbook Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#cookbook {
+    padding: 50px 0;
+    background: #0C0C0C;
+    color: #fff;
+}
+
+#cookbook h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.user_recipes {
+    margin-bottom: 40px;
+}
+
+.user_recipes h4 {
+    margin-bottom: 3px;
+}
+
+.user_recipes a {
+    color: #fff;
+}
+
+.user_recipes p {
+    line-height: 23px;
+}
+
+.user_recipes .date {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.user_recipes .content {
+    margin-top: 20px;
+}
+
+
+/* Reservation Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.reservation {
+    text-align: center;
+}
+
+.reserve-header p {
+    color: #fff;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+.reservation-form {
+    margin: 20px 0;
+}
+
+.reservation-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #fff;
+}
+
+.reservation h2 {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+
+.reserve-header {
+    background: url(../images/dinner-table.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.reserve-left-col p {
+    color: #D8D8D8;
+}
+
+
+/* Reservation form
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.form-custom input[type="text"] {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    transition: border 0.3s;
+    box-shadow: none;
+    height: 50px;
+    border-radius: 0;
+    background: #fcfcfc;
+}
+
+.form-custom input[type="text"]:focus,
+.form-custom input[type="text"].focus {
+    background: #fdfdfd;
+    border: 1px solid #e2e2e2;
+    box-shadow: none;
+}
+
+.form-custom .input-group-addon {
+    background: #fdfdfd;
+    border: 1px solid #e2e2e2;
+    border-right: 0;
+}
+
+.form-custom .form-group {
+    margin-bottom: 25px;
+}
+
+.form-custom .icon{
+        margin-top: 4px;
+    font-size: 16px;
+    display: inline-block;
+    color:#777;
+}
+
+/* Contact section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#contact {
+    position: relative;
+}
+
+.contact-details {
+    width: 420px;
+    position: absolute;
+    top: 0;
+    background: #fff;
+    border: #C7C7C7 2px solid;
+    padding: 25px;
+    margin-top: 80px;
+}
+
+.contact-details h2 {
+    margin: 0;
+}
+
+.contact-details p {
+    line-height: 24px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-phone, .contact-email{
+    margin-bottom: 10px;
+}
+
+.contact-details .icon{
+    margin-right: 5px;
+    margin-top: 3px;
+
+    font-size: 14px;
+    display: inline-block;
+    color: #777;
+    float: left;
+}
+
+/* Footer section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+footer {
+    background: #0C0C0C;
+    color: #fff;
+    padding: 18px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 580) {
+    .pushy-active #hamburger {
+        right: 10px;
+    }
+}
+
+@media only screen and (max-width: 640px)  {
+#home h2{
+    font-size: 46px;
+    }
+}
+
+@media only screen and (max-width: 768px)  {
+   .contact-details{
+    position:static;
+    margin:0 0 30px 0;
+    width:100%;
+    }
+}
+
+@media only screen and (max-width: 990px)  {
+   .history{
+   min-height: 100%;
+    }
+}
+
+@media only screen and (max-width: 349px)  {
+   .close-btn{
+   display:block !important;
+    }
+}
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* BUTTONS */
+.btn-primary{
+    background:none;
+    padding: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    border:#fff 2px solid;
+    -webkit-box-shadow: none;
+    box-shadow: none;: 
+ -webkit-transition: all 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background: #fff;
+    border: #fff 2px solid;
+    color:#000;
+}
+
+.reservation-form .btn-primary {
+    background: #DE403C;
+    border:none;  
+}
+
+.reservation-form .btn-primary:hover, .reservation-form .btn-primary:focus, .reservation-form .btn-primary:active {
+    color: #fff;
+    background: #D03834;
+}
+
+/* Helper Classes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.p-l-n {
+    padding-left: 0 !important;
+}
+
+.f-n{
+    float: none;
+}

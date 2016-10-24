@@ -1,59 +1,94 @@
-<% unless @green_light_recipes.empty? %>
-  <h2>You have the ingredients for: </h2>
-  <% @green_light_recipes.each_slice(3) do |recipe_row| %>
-    <div class="row">
-      <% recipe_row.each do |recipe| %>
-        <div class="col-md-4">
-          <div class="well thumbnail index-list">
-            <h3><%= recipe["title"] %></h3>
-            <img class="index-img" src="<%= recipe["image"] %>">
-            <a href="/recipes/<%= recipe["id"] %>">Go To Recipe</a>
-            <% unless recipe["missedIngredientCount"] == 0 %>
-              <h4>Ingredients Missing: <%= recipe["missedIngredientCount"] %></h4>
-            <% end %>
+<!-- Gallery section starts -->
+<section id="gallery" class="gallery">
+  <% unless @green_light_recipes.empty? %>
+    <h2>Allez Cuisine</h2>
+    <% @green_light_recipes.each_slice(4) do |recipe_row| %>
+      <div class="row">
+        <% recipe_row.each do |recipe| %>
+          <div class="col-md-3">
+            <div class="flex-images">
+              <figure class="item" data-w="400" data-h="267">
+                <a href="/recipes/<%= recipe["id"] %>">
+                <img src="<%= recipe["image"] %>" alt="" title="<%= recipe["title"] %>" />
+                </a>
+              </figure>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-<%end %>
 
-<% unless @yellow_light_recipes.empty? %>
-  <h2>You need a couple more ingredients for: </h2>
-  <% @yellow_light_recipes.each_slice(3) do |recipe_row| %>
-    <div class="row">
-      <% recipe_row.each do |recipe| %>
-        <div class="col-md-4">
-          <div class="well thumbnail index-list">
-            <h3><%= recipe["title"] %></h3>
-            <img class="index-img" src="<%= recipe["image"] %>">
-            <a href="/recipes/<%= recipe["id"] %>">Go To Recipe</a>
-            <% unless recipe["missedIngredientCount"] == 0 %>
-              <h3>Ingredients Missing: <%= recipe["missedIngredientCount"] %></h3>
-            <% end %>
+  <% unless @yellow_light_recipes.empty? %>
+    <h2>Just a couple more ... </h2>
+    <% @yellow_light_recipes.each_slice(4) do |recipe_row| %>
+      <div class="row">
+        <% recipe_row.each do |recipe| %>
+          <div class="col-md-3">
+            <div class="flex-images">
+              <figure class="item" data-w="400" data-h="267">
+                <a href="/recipes/<%= recipe["id"] %>">
+                <img src="<%= recipe["image"] %>" alt="" title="<%= recipe["title"] %>" />
+                </a>
+                <% unless recipe["missedIngredientCount"] == 0 %>
+                  <h3>Ingredients Missing: <%= recipe["missedIngredientCount"] %></h3>
+                <% end %>
+              </figure>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</section> <!-- Gallery section ends -->
 
-<% unless @red_light_recipes.empty? %>
-  <h2>You need to go grocery shopping for: </h2>
-  <% @red_light_recipes.each_slice(3) do |recipe_row| %>
-    <div class="row">
-      <% recipe_row.each do |recipe| %>
-        <div class="col-md-4">
-          <div class="well thumbnail index-list">
-            <h3><%= recipe["title"] %></h3>
-            <img class="index-img" src="<%= recipe["image"] %>">
-            <a href="/recipes/<%= recipe["id"] %>">Go To Recipe</a>
-            <% unless recipe["missedIngredientCount"] == 0 %>
-              <h3>Ingredients Missing: <%= recipe["missedIngredientCount"] %></h3>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+<!-- Gallery section starts -->
+<section id="gallery" class="gallery">
+    <div class="flex-images">
+        <figure class="item" data-w="400" data-h="267">
+            <%= link_to "gallery/large/1.jpg" %>
+                <%= image_tag "gallery/thumb/1.jpg", title: "Image title 1" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="267" data-h="400">
+            <%= link_to "gallery/large/2.jpg" %>
+                <%= image_tag "gallery/thumb/2.jpg", title: "Image title 2" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="267" data-h="400">
+            <%= link_to "gallery/large/3.jpg" %>
+                <%= image_tag "gallery/thumb/3.jpg", title: "Image title 3" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="400" data-h="300">
+            <%= link_to "gallery/large/4.jpg" %>
+                <%= image_tag "gallery/thumb/4.jpg", title: "Image title 4" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="300" data-h="350">
+            <%= link_to "gallery/large/5.jpg" %>
+                <%= image_tag "gallery/thumb/5.jpg", title: "Image title 5" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="400" data-h="300">
+            <%= link_to "gallery/large/6.jpg" %>
+                <%= image_tag "gallery/thumb/6.jpg", title: "Image title 6" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="267" data-h="400">
+            <%= link_to "gallery/large/7.jpg" %>
+                <%= image_tag "gallery/thumb/7.jpg", title: "Image title 7" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="400" data-h="267">
+            <%= link_to "gallery/large/8.jpg" %>
+                <%= image_tag "gallery/thumb/8.jpg", title: "Image title 8" %>
+            </a>
+        </figure>
+        <figure class="item" data-w="400" data-h="267">
+            <%= link_to "gallery/large/9.jpg" %>
+                <%= image_tag "gallery/thumb/9.jpg", title: "Image title 9" %>
+            </a>
+        </figure>
     </div>
-  <% end %>
-<% end %>
+</section> <!-- Gallery section ends -->

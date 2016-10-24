@@ -22,9 +22,12 @@
       <p><%= step["number"] %>. <%= step["step"] %></p>
     <% end %>
   <% end %>  
-  <p><a href="<%= @recipe["sourceUrl"] %>">Start Cooking</a></p>
   <% if @contained_in_cook_book == true %>
-    <h4>User Rating: <%= @user_cookbook.rating %> Stars</h4>
+    <h4>User Rating: 
+    <% @user_cookbook.rating.times do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+    </h4>
     <br>
     <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", method: :delete %>
   <% else %>

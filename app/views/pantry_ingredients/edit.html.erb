@@ -1,12 +1,39 @@
-<h1>Edit <%= @pantry_ingredient.ingredient.name %></h1>
-<%= form_tag "/pantry/#{@pantry_ingredient.id}", method: :patch do %>
-  <div>
-    <%= label_tag :amount %>
-    <%= text_field_tag :amount %>
+<!-- Reservation section starts -->
+<section id="reservation" class="clearfix reservation">
+  <div class="reserve-header">
+    <div class="container">
+      <div class="col-sm-6 f-n center-block">
+        <h2>Edit <%= @pantry_ingredient.ingredient.name %></h2>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= label_tag :measurement_id, 'Unit: ' %>
-    <%= collection_select :measurement, :measurement_id, Measurement.all, :id, :unit %>
+
+  <div class="container reservation-container">
+    <div class="row">
+    <!-- Reservation form starts -->
+      <div class="col-md-5 reservation-form">
+        <%= form_tag "/pantry/#{@pantry_ingredient.id}", class:"form-custom", method: :patch do %>
+          <div class="form-group">
+            <label class="sr-only" for="amount">Amount</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-space-shuttle" aria-hidden="true"></i></div>
+              <%= text_field_tag :amount, nil ,placeholder: "Amount", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="unit">unit</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-rebel" aria-hidden="true"></i></div>
+              <%= collection_select :measurement, :measurement_id, Measurement.all, :id, :unit, { prompt: "Select Unit Type ..." }, { class: "form-control" } %>
+            </div>
+          </div>
+
+          <%= submit_tag 'Save Changes', class: "btn btn-block btn-primary" %>
+        <% end %>
+      </div> <!-- Reservation form ends -->
+      
+      <hr class="visible-sm">
+    </div>
   </div>
-  <%= submit_tag 'Submit' %>
-<% end %>
+</section> <!-- Reservation section ends -->
