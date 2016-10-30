@@ -43,6 +43,7 @@
     font-family: GreatVibes-Regular;
     src: url(../fonts/GreatVibes-Regular.ttf);
 }
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
 
 
 /* Basic
@@ -70,7 +71,6 @@ h2 {
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
-
 
 /* Font icons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -369,7 +369,7 @@ h2 {
 }
 
 .video-overlay {
-    background: #000 url(../images/brilliant.png);
+    background: #000;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -413,7 +413,6 @@ h2 {
 }
 
 .background-image-holder{
-   background: url(../images/chef.jpg) 50% 0% no-repeat;
     width: 425px;
     height: 100%;
     z-index: 0;
@@ -426,30 +425,33 @@ h2 {
 }
 
 
-/* Our Menu Section
+/* Virtual Pantry Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#our-menu h2 {
+#virtual-pantryh2 {
     text-align: center;
     display: block;
 }
 
-#our-menu {
-    background: #161615 url(../images/barbeque-bg.jpg) no-repeat;
+#virtual-pantry{
+    background: linear-gradient(#161615, transparent), url(/assets/pantry.jpg) no-repeat;
     padding: 50px 0;
     color: #fff;
     -webkit-background-size: cover;
     background-size: cover;
-    height: 100%;
 }
 
-#our-menu h3 {
+#virtual-pantry h3 {
     font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
 }
 
-.menu-tabs {
+#virtual-pantry a {
+    color: #fff;
+}
+
+.pantry-tabs {
     border-bottom: 2px solid #DDD;
     margin: 0 0 40px 0;
     text-transform: uppercase;
@@ -458,25 +460,25 @@ h2 {
     text-align: center;
 }
 
-.menu-tabs > li.active > a,
-.menu-tabs > li.active > a:focus,
-.menu-tabs > li.active > a:hover {
+.pantry-tabs > li.active > a,
+.pantry-tabs > li.active > a:focus,
+.pantry-tabs > li.active > a:hover {
     border-width: 0;
 }
 
-.menu-tabs > li > a {
+.pantry-tabs > li > a {
     border: none;
     color: #666;
 }
 
-.menu-tabs > li.active > a,
-.menu-tabs > li > a:hover {
+.pantry-tabs > li.active > a,
+.pantry-tabs > li > a:hover {
     border: none;
     color: #fff !important;
     background: transparent;
 }
 
-.menu-tabs > li > a::after {
+.pantry-tabs > li > a::after {
     content: "";
     background: #fff;
     height: 2px;
@@ -488,44 +490,44 @@ h2 {
     transform: scale(0);
 }
 
-.menu-tabs > li.active > a::after,
-.menu-tabs > li:hover > a::after {
+.pantry-tabs > li.active > a::after,
+.pantry-tabs > li:hover > a::after {
     transform: scale(1);
 }
 
-.menu-tabs li,
-.menu-tabs li a {
+.pantry-tabs li,
+.pantry-tabs li a {
     display: inline-block;
 }
 
-.menu-tabs li {
+.pantry-tabs li {
     float: none;
 }
 
-.menu-tabs>li.active>a,
-.menu-tabs>li.active>a:hover,
-.menu-tabs>li.active>a:focus {
+.pantry-tabs>li.active>a,
+.pantry-tabs>li.active>a:hover,
+.pantry-tabs>li.active>a:focus {
     background: none;
     color: #fff;
 }
 
-.menu-tabs li a {
+.pantry-tabs li a {
     color: #D2D2D2;
     border-radius: 0;
     display: inline-block;
     margin: 0 6px;
 }
 
-.menu-group-item {
+.pantry-group-item {
     margin-bottom: 20px;
 }
 
-.menu-item-price {
+.pantry-item-price {
     font-size: 20px;
     font-weight: 600;
 }
 
-.menu-title {
+.pantry-title {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -533,23 +535,36 @@ h2 {
     margin: 5px 0;
 }
 
-.menu-descp {
+.pantry-descp {
     color: #868686;
 }
 
 
-/* Gallery Section
+/* Recipes Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-#gallery {
+#recipes {
+    padding-top: 50px;
     padding: 50px 0;
     background: #0C0C0C;
     color: #fff;
 }
 
-#gallery h2 {
+.recipe-header {
+    background: url(/assets/pasta.jpg);
+}
+
+#recipes h2 {
     text-align: center;
     margin-bottom: 50px;
+}
+
+#recipes a {
+    color: #fff;
+}
+
+#recipes a:hover {
+    background: none;
 }
 
 .sl-wrapper .sl-counter, .sl-wrapper .sl-close, .sl-wrapper .sl-navigation button{
@@ -582,7 +597,7 @@ figure.item:hover img {
 }
 
 
-/* Cookbook Section
+/* Cook Book Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #cookbook {
     padding: 50px 0;
@@ -620,6 +635,26 @@ figure.item:hover img {
     margin-top: 20px;
 }
 
+/* Recipe Show Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#recipe-show  {
+    background: #161615;
+    color: #fff;
+}
+
+#recipe-show  ul {
+    color: #fff;
+}
+
+#recipe-show  p {
+    color: #000;
+}
+
+#recipe-show  .directions {
+    background: #fff;
+    color: #000;
+}
+
 
 /* Reservation Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -655,7 +690,7 @@ figure.item:hover img {
 }
 
 .reserve-header {
-    background: url(../images/dinner-table.jpg)  no-repeat;
+    background: linear-gradient(#161615, transparent), url(/assets/spice.jpg)  no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -664,6 +699,40 @@ figure.item:hover img {
 
 .reserve-left-col p {
     color: #D8D8D8;
+}
+
+.opening-hours {
+    background: #0C0C0C;
+    padding: 16px;
+}
+
+.opening-hours h2 {
+    font-size: 40px;
+    border-bottom: #fff 1px solid;
+    margin-bottom: 20px;
+}
+
+.opening-hours .frame {
+    border: #fff 2px solid;
+    margin-bottom: 0;
+    padding: 40px 25px;
+}
+
+.opening-hours ul p {
+    color: #fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.opening-hours ul li {
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.opening-hours ul li:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -703,6 +772,33 @@ figure.item:hover img {
     display: inline-block;
     color:#777;
 }
+
+.datepicker {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: block;
+}
+
+.datepicker td, .datepicker th {
+    border-radius: 0;
+    font-weight: normal;
+    padding: 5px 11px !important;
+}
+
+
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+    background: #E0E0E0;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover {
+    background: #E0E0E0;
+}
+
+.datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active:hover.disabled, .datepicker table tr td.active.disabled.disabled, .datepicker table tr td.active.disabled:hover.disabled, .datepicker table tr td.active[disabled], .datepicker table tr td.active:hover[disabled], .datepicker table tr td.active.disabled[disabled], .datepicker table tr td.active.disabled:hover[disabled] {
+    background: #D9534F;
+    color: #fff;
+}
+
 
 /* Contact section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

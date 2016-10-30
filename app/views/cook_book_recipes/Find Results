@@ -1,0 +1,47 @@
+Searching 2606 files for "barbeque"
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/log/development.log:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/public/css/main.css:
+  434  
+  435  #our-menu {
+  436:     background: #161615 url(../images/barbeque-bg.jpg) no-repeat;
+  437      padding: 50px 0;
+  438      color: #fff;
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/7Q/7qIPSepWrcGyCV320TdQ04lR07Bb9DhCQ-h6O5HMFmc.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/9W/9WJwLwEMGb2MaYi_-dSqFmzqdWKStZjMEuIEbMq1QiI.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/DC/DCP1bAIYtMPIleaE_q9O8XyDrnReoWfxzCy5mxx25lM.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/DJ/dJ7w-LBhQFp1iGmTY4UNUsTu2RwZhy2zinY6_YVuPP8.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/e6/E6i_HWQAbggsATTtD48xe2STWzflJoY6vpssWiBgzrs.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/N1/N1y4HpWp6_xKvE8EhhrEk3JoPZjvfZYDfbIhY9epIa4.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/o-/O-S6DtvcCvifolR-l5nL0K1aJg3kKLxEpzjFpzvNJQc.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/rH/RHvbQxFMmcMAbKLWhJlPndNJ1uhAZqSZiAk7wCcX45E.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/tmp/cache/assets/sprockets/v3.0/RM/RMURqAMDZNfiy0F3fNA3lBs0M1aqYmujQFcGfrAwU44.cache:
+    <binary>
+
+/Users/nathanmacaso/Desktop/actualize_projects/midnight-snack-app/vendor/assets/stylesheets/css/main.css:
+  435  
+  436  #our-menu {
+  437:     background: #161615 url(../images/barbeque-bg.jpg) no-repeat;
+  438      padding: 50px 0;
+  439      color: #fff;
+
+305 matches across 12 files

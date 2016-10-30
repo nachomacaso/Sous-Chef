@@ -4,6 +4,7 @@ class PantryIngredientsController < ApplicationController
   end
 
   def new
+    @pantry_ingredient = PantryIngredient.new
   end
 
   def create
@@ -48,5 +49,9 @@ class PantryIngredientsController < ApplicationController
 
     flash[:success] = 'Successfully deleted ingredient'
     redirect_to '/pantry'  
+  end
+
+  def user_params
+    params.require(:pantry_ingredient).permit(:image)
   end
 end

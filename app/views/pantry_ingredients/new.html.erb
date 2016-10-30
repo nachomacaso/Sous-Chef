@@ -3,7 +3,7 @@
   <div class="reserve-header">
     <div class="container">
       <div class="col-sm-6 f-n center-block">
-        <h2>Add New Ingredient To Pantry</h2>
+        <h2>Add New Ingredient</h2>
       </div>
     </div>
   </div>
@@ -45,10 +45,19 @@
             </div>
           </div>
 
+          <%= form_for @pantry_ingredient, class:"form-custom", html: { multipart: true } do |form| %>
+            <div class="form-group">
+              <label class="sr-only" for="name">Upload Barcode</label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></div>
+              <%= form.file_field :image %>
+            </div>
+          <% end %>
+          <br>
+
           <%= submit_tag 'Add To Pantry', class: "btn btn-block btn-primary" %>
         <% end %>
       </div> <!-- Reservation form ends -->
-      
       <hr class="visible-sm">
     </div>
   </div>

@@ -1,7 +1,7 @@
 <!-- Home section starts -->
 <section id="home" class="slides">
   <div class="video-overlay"></div>
-    <div id="video-block" style="width: 100%; height: 100%;" data-vide-bg="mp4: videos/pan, webm: videos/pan" data-vide-options="position: 0% 50%">         
+    <div id="video-block" style="width: 100%;height: 100%;z-index: -1;position: absolute;" <%= vider_tag 'assets/pan.mp4' %>        
       <ul class="slides-container">
         <!-- Slide 1 -->
         <li>
@@ -28,7 +28,7 @@
 <section id="about" class="container-fluid">
   <div class="photo-container col-lg-4 hidden-sm hidden-xs divider-background p-l-n">
     <div class="background-image-holder">
-      <img src="images/chef.jpg" alt="" style="display:none">
+      <%= image_tag "chef.jpg", class: "chef-img"%>
     </div>
   </div>
   <div class="row">

@@ -1,41 +1,43 @@
-<div class="container">
-  <div class="row-show">
-    <div class="col-sm-6">
-      <h2><%= @recipe["title"] %></h2>
-      <img class="show-img" src="<%= @recipe["image"] %>">
-    </div>
-    <div class="col-sm-6">
-      <ul>
-      <h2>Ingredient List</h2>
-        <% @recipe_ingredients.each do |recipe_ingredient| %>
-          <li><%= recipe_ingredient["amount"] %> <%= recipe_ingredient["unit"] %> <%= recipe_ingredient["name"] %></li>
-        <% end %>
-      </ul>
+<section id="recipe-show"> 
+  <div class="container">
+    <div class="row-show">
+      <div class="col-md-6 text-left">
+        <ul>
+        <h2>Ingredient List</h2>
+          <% @recipe_ingredients.each do |recipe_ingredient| %>
+            <li><%= recipe_ingredient["amount"] %> <%= recipe_ingredient["unit"] %> <%= recipe_ingredient["name"] %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-6 text-left">
+        <h2><%= @recipe["title"] %></h2>
+        <img class="show-img" src="<%= @recipe["image"] %>">
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <h2>Directions</h2>
-  <% @directions.each do |direction| %>
-    <% direction["steps"].each do |step| %>
-      <p><%= step["number"] %>. <%= step["step"] %></p>
-    <% end %>
-  <% end %>  
-  <% if @contained_in_cook_book == true %>
-    <h4>User Rating: 
-    <% @user_cookbook.rating.times do %>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    <% end %>
-    </h4>
-    <br>
-    <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", method: :delete %>
-  <% else %>
-    <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
-      <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
-      <%= hidden_field_tag :recipe_id, @recipe["id"] %>
+  <div class="directions col-md-12">
+    <h2>Directions</h2>
+    <% @directions.each do |direction| %>
+      <% direction["steps"].each do |step| %>
+        <p><%= step["number"] %>. <%= step["step"] %></p>
+      <% end %>
+    <% end %>  
+    <% if @contained_in_cook_book == true %>
+      <h4>User Rating: 
+      <% @user_cookbook.rating.times do %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+      </h4>
       <br>
-      <%= submit_tag 'Add To Cook Book', class:"btn btn-default" %>
+      <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", method: :delete %>
+    <% else %>
+      <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
+        <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
+        <%= hidden_field_tag :recipe_id, @recipe["id"] %>
+        <br><br>
+        <%= submit_tag 'Add To Cook Book', class:"btn btn-default" %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+</section>

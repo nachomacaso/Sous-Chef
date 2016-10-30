@@ -25,15 +25,15 @@ class RecipeIngredientsController < ApplicationController
     @yellow_light_recipes = []
 
     @recipes.each do |recipe|
-      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length < 3
+      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length <= 3
         unless recipe["image"].nil?
           @green_light_recipes << recipe
-          @green_light_recipes = @green_light_recipes.sample(8)
+          @green_light_recipes = @green_light_recipes.sample(12)
         end
-      elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.75 && recipe["missedIngredients"].length <= 5
+      elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.50 && recipe["missedIngredients"].length <= 5
         unless recipe["image"].nil? 
           @yellow_light_recipes << recipe
-          @yellow_light_recipes = @yellow_light_recipes.sample(8)
+          @yellow_light_recipes = @yellow_light_recipes.sample(12)
           @yellow_missing = recipe["missedIngredients"].length
         end
       end
