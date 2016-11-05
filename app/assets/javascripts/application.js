@@ -15,4 +15,6 @@
 //= require jquery_ujs
 //= require jquery.vide
 //= require recipe_index
+//= require live_w_locator
+//= require quagga
 //= require_tree .

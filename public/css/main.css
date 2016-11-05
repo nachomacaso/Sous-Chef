@@ -427,17 +427,17 @@ h2 {
 
 /* Virtual Pantry Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#virtual-pantryh2 {
-    text-align: center;
-    display: block;
-}
-
-#virtual-pantry{
+#virtual-pantry {
     background: linear-gradient(#161615, transparent), url(/assets/pantry.jpg) no-repeat;
     padding: 50px 0;
     color: #fff;
     -webkit-background-size: cover;
     background-size: cover;
+}
+
+#virtual-pantry h2 {
+    text-align: center;
+    display: block;
 }
 
 #virtual-pantry h3 {
@@ -546,12 +546,8 @@ h2 {
 #recipes {
     padding-top: 50px;
     padding: 50px 0;
-    background: #0C0C0C;
-    color: #fff;
-}
-
-.recipe-header {
     background: url(/assets/pasta.jpg);
+    color: #fff;
 }
 
 #recipes h2 {
@@ -656,40 +652,49 @@ figure.item:hover img {
 }
 
 
-/* Reservation Section
+/* Ingredient Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.reservation {
+.ingredient {
     text-align: center;
 }
 
-.reserve-header p {
+.ingredient-header p {
     color: #fff;
 }
 
-#map {
-    width: 100%;
-    height: 500px;
-}
-
-.reservation-form {
+.ingredient-form {
     margin: 20px 0;
 }
 
-.reservation-container {
+.ingredient-container {
     padding-top: 50px;
     padding-bottom: 50px;
     color: #fff;
 }
 
-.reservation h2 {
+.ingredient h2 {
     display: inline-block;
     margin: 0 auto;
     text-align: center;
     color: #fff;
 }
 
-.reserve-header {
+.ingredient h3 {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    color: #000;
+}
+
+.ingredient span {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    color: #000;
+}
+
+.ingredient-header {
     background: linear-gradient(#161615, transparent), url(/assets/spice.jpg)  no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -697,46 +702,11 @@ figure.item:hover img {
     text-align: center;
 }
 
-.reserve-left-col p {
+.ingredient-left-col p {
     color: #D8D8D8;
 }
 
-.opening-hours {
-    background: #0C0C0C;
-    padding: 16px;
-}
-
-.opening-hours h2 {
-    font-size: 40px;
-    border-bottom: #fff 1px solid;
-    margin-bottom: 20px;
-}
-
-.opening-hours .frame {
-    border: #fff 2px solid;
-    margin-bottom: 0;
-    padding: 40px 25px;
-}
-
-.opening-hours ul p {
-    color: #fff;
-    margin-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.opening-hours ul li {
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.opening-hours ul li:last-child {
-    margin-bottom: 0;
-}
-
-
-/* Reservation form
+/* Add Ingredient form
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .form-custom input[type="text"] {
@@ -767,78 +737,10 @@ figure.item:hover img {
 }
 
 .form-custom .icon{
-        margin-top: 4px;
+    margin-top: 4px;
     font-size: 16px;
     display: inline-block;
     color:#777;
-}
-
-.datepicker {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    display: block;
-}
-
-.datepicker td, .datepicker th {
-    border-radius: 0;
-    font-weight: normal;
-    padding: 5px 11px !important;
-}
-
-
-.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
-    background: #E0E0E0;
-}
-
-.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover {
-    background: #E0E0E0;
-}
-
-.datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active:hover.disabled, .datepicker table tr td.active.disabled.disabled, .datepicker table tr td.active.disabled:hover.disabled, .datepicker table tr td.active[disabled], .datepicker table tr td.active:hover[disabled], .datepicker table tr td.active.disabled[disabled], .datepicker table tr td.active.disabled:hover[disabled] {
-    background: #D9534F;
-    color: #fff;
-}
-
-
-/* Contact section
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-#contact {
-    position: relative;
-}
-
-.contact-details {
-    width: 420px;
-    position: absolute;
-    top: 0;
-    background: #fff;
-    border: #C7C7C7 2px solid;
-    padding: 25px;
-    margin-top: 80px;
-}
-
-.contact-details h2 {
-    margin: 0;
-}
-
-.contact-details p {
-    line-height: 24px;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.contact-phone, .contact-email{
-    margin-bottom: 10px;
-}
-
-.contact-details .icon{
-    margin-right: 5px;
-    margin-top: 3px;
-
-    font-size: 14px;
-    display: inline-block;
-    color: #777;
-    float: left;
 }
 
 /* Footer section
@@ -915,12 +817,12 @@ footer p {
     color:#000;
 }
 
-.reservation-form .btn-primary {
+.ingredient-form .btn-primary {
     background: #DE403C;
     border:none;  
 }
 
-.reservation-form .btn-primary:hover, .reservation-form .btn-primary:focus, .reservation-form .btn-primary:active {
+.ingredient-form .btn-primary:hover, .ingredient-form .btn-primary:focus, .ingredient-form .btn-primary:active {
     color: #fff;
     background: #D03834;
 }

@@ -50,8 +50,4 @@ class PantryIngredientsController < ApplicationController
     flash[:success] = 'Successfully deleted ingredient'
     redirect_to '/pantry'  
   end
-
-  def user_params
-    params.require(:pantry_ingredient).permit(:image)
-  end
 end
