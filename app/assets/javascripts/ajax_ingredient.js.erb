@@ -1,0 +1,23 @@
+$(document).ready(function(){
+  $("button.btn-barcode").click(function(){
+    var barcode = $("h4.code").html();
+    $.ajax({
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/products/upc/'+barcode,
+      headers: {
+              'Accept': 'application/json',
+              'X-Mashape-Key': "<%= ENV['mashape_key'] %>"
+        },
+      method: 'GET',
+      dataType: 'json',
+      success: function(response){
+        console.log("******************");
+        console.log("******************");
+        var ingredient_name = response.title;
+        console.log(ingredient_name);
+        console.log("******************");
+        console.log("******************");
+        document.getElementById("ingredient-name").value = ingredient_name;
+      }
+    });
+  });
+});

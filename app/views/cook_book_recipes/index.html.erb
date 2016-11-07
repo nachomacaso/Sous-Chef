@@ -1,15 +1,15 @@
 <!-- Cook Book section starts -->
 <section id="cookbook">
   <h2>Cook Book</h2>
-  <div class="container">
+  <div class="cookbook-container">
     <!-- Iterate thru cook book recipes -->
     <% @cook_book_recipes.each_slice(3) do |cook_book_recipe_row| %>
       <div class="row">
         <% cook_book_recipe_row.each do |cook_book_recipe| %>
           <div class="col-sm-4 col-md-4">
-            <div class="user_recipes">
-              <div class="user_recipes-img-content">
-                <a href="/recipes/<%= cook_book_recipe.recipe.spoonacular_id %>"><img src="<%= cook_book_recipe.recipe.image %>" class="img-responsive" alt="user_recipes-thumb"></a>
+            <div class="user-recipes">
+              <div class="user-recipes-img-content">
+                <a href="/recipes/<%= cook_book_recipe.recipe.spoonacular_id %>"><img src="<%= cook_book_recipe.recipe.image %>" class="img-responsive" alt="user-recipes-thumb"></a>
               </div>
               <div class="content">
                 <h4><a href="/recipes/<%= cook_book_recipe.recipe.spoonacular_id %>"><%= cook_book_recipe.recipe.name %></a></h4>

@@ -32,10 +32,12 @@
 /* line 25, ../sass/_viewport.scss */
 .controls .reader-config-group {
   float: right;
+  display:inline-block;
 }
 /* line 28, ../sass/_viewport.scss */
 .controls .reader-config-group label {
   display: block;
+  display:inline-block;
 }
 /* line 30, ../sass/_viewport.scss */
 .controls .reader-config-group label span {

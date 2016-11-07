@@ -100,8 +100,6 @@
                 *
                 */
                 var h = $cap.height();
-                console.log(h);
-                    
                     
                 /*
                 * 

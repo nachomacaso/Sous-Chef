@@ -343,15 +343,7 @@ h2 {
     padding-bottom: 0;
 }
 
-.slides .btn-primary{
-    margin-top: 20px;
-}
-
-.slides-pagination {
-    display: none;
-}
-
-.caption {
+#home .caption-video {
     position: absolute;
     left: 0;
     top: 70%;
@@ -359,6 +351,14 @@ h2 {
     width: 100%;
     color: #fff;
     padding: 0 25px;
+}
+
+.slides .btn-primary{
+    margin-top: 20px;
+}
+
+.slides-pagination {
+    display: none;
 }
 
 #home p {
@@ -563,6 +563,16 @@ h2 {
     background: none;
 }
 
+#recipes .caption {
+    position: absolute;
+    left: 0;
+    top: 70%;
+    margin-top: -240px;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px;
+}
+
 .sl-wrapper .sl-counter, .sl-wrapper .sl-close, .sl-wrapper .sl-navigation button{
     color:#fff;
 }
@@ -597,7 +607,7 @@ figure.item:hover img {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #cookbook {
     padding: 50px 0;
-    background: #0C0C0C;
+    background: linear-gradient(#161615, transparent), url(/assets/cook-book.jpg) no-repeat;
     color: #fff;
 }
 
@@ -606,28 +616,32 @@ figure.item:hover img {
     margin-bottom: 50px;
 }
 
-.user_recipes {
+.cookbook-container {
+    padding-bottom: 50px;
+}
+
+.user-recipes {
     margin-bottom: 40px;
 }
 
-.user_recipes h4 {
+.user-recipes h4 {
     margin-bottom: 3px;
 }
 
-.user_recipes a {
+.user-recipes a {
     color: #fff;
 }
 
-.user_recipes p {
+.user-recipes p {
     line-height: 23px;
 }
 
-.user_recipes .date {
+.user-recipes .date {
     margin-bottom: 5px;
     display: block;
 }
 
-.user_recipes .content {
+.user-recipes .content {
     margin-top: 20px;
 }
 
@@ -636,6 +650,7 @@ figure.item:hover img {
 #recipe-show  {
     background: #161615;
     color: #fff;
+    padding-bottom: 10px;
 }
 
 #recipe-show  ul {
@@ -680,8 +695,7 @@ figure.item:hover img {
     color: #fff;
 }
 
-.ingredient h3 {
-    display: inline-block;
+.ingredient h4 {
     margin: 0 auto;
     text-align: center;
     color: #000;
@@ -704,6 +718,15 @@ figure.item:hover img {
 
 .ingredient-left-col p {
     color: #D8D8D8;
+}
+
+#ingredient .caption-ingredient {
+    left: 0;
+    top: 70%;
+    margin-top: 4px;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px;
 }
 
 /* Add Ingredient form
@@ -825,6 +848,11 @@ footer p {
 .ingredient-form .btn-primary:hover, .ingredient-form .btn-primary:focus, .ingredient-form .btn-primary:active {
     color: #fff;
     background: #D03834;
+}
+
+.controls .btn-primary {
+    background: #DE403C;
+    border:none;  
 }
 
 /* Helper Classes
