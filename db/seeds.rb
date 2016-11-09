@@ -14,7 +14,6 @@ CookBook.create!([
   {user_id: 2}
 ])
 CookBookRecipe.create!([
-  {cook_book_id: 1, rating: 5, recipe_id: 3},
   {cook_book_id: 1, rating: 4, recipe_id: 4},
   {cook_book_id: 1, rating: 4, recipe_id: 5},
   {cook_book_id: 1, rating: 5, recipe_id: 2},
@@ -76,7 +75,15 @@ Ingredient.create!([
   {name: "Soy Sauce", category_id: 2},
   {name: "Unsalted Butter", category_id: 1},
   {name: "Mortadella", category_id: 9},
-  {name: "Sesame Oil", category_id: 2}
+  {name: "Sesame Oil", category_id: 2},
+  {name: "Ham", category_id: 9},
+  {name: "Bok Choy", category_id: 5},
+  {name: "Curry Powder", category_id: 3},
+  {name: "Spam", category_id: 7},
+  {name: "Kikkoman Coating Mix", category_id: 3},
+  {name: "Spam Canned Meat - Classic", category_id: 7},
+  {name: "Garlic Clove", category_id: 5},
+  {name: "Ground Pepper", category_id: 3}
 ])
 Measurement.create!([
   {unit: "serving"},
@@ -106,7 +113,6 @@ PantryIngredient.create!([
   {ingredient_id: 3, user_id: 1, measurement_id: 9, amount: "1.0"},
   {ingredient_id: 4, user_id: 1, measurement_id: 7, amount: "2.0"},
   {ingredient_id: 5, user_id: 1, measurement_id: 4, amount: "50.0"},
-  {ingredient_id: 6, user_id: 1, measurement_id: 4, amount: "30.0"},
   {ingredient_id: 7, user_id: 1, measurement_id: 4, amount: "50.0"},
   {ingredient_id: 8, user_id: 1, measurement_id: 4, amount: "10.0"},
   {ingredient_id: 9, user_id: 1, measurement_id: 4, amount: "5.0"},
@@ -115,8 +121,6 @@ PantryIngredient.create!([
   {ingredient_id: 12, user_id: 1, measurement_id: 3, amount: "5.0"},
   {ingredient_id: 13, user_id: 1, measurement_id: 4, amount: "15.0"},
   {ingredient_id: 14, user_id: 1, measurement_id: 4, amount: "25.0"},
-  {ingredient_id: 15, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 16, user_id: 1, measurement_id: 1, amount: "5.0"},
   {ingredient_id: 17, user_id: 1, measurement_id: 1, amount: "2.0"},
   {ingredient_id: 19, user_id: 1, measurement_id: 1, amount: "3.0"},
   {ingredient_id: 20, user_id: 1, measurement_id: 11, amount: "5.0"},
@@ -149,9 +153,14 @@ PantryIngredient.create!([
   {ingredient_id: 51, user_id: 1, measurement_id: 1, amount: "1.0"},
   {ingredient_id: 52, user_id: 1, measurement_id: 1, amount: "1.0"},
   {ingredient_id: 53, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 54, user_id: 1, measurement_id: 1, amount: "0.25"},
   {ingredient_id: 55, user_id: 1, measurement_id: 5, amount: "6.0"},
-  {ingredient_id: 2, user_id: 1, measurement_id: 5, amount: "8.0"}
+  {ingredient_id: 2, user_id: 1, measurement_id: 5, amount: "8.0"},
+  {ingredient_id: 56, user_id: 1, measurement_id: 11, amount: "0.25"},
+  {ingredient_id: 54, user_id: 1, measurement_id: 11, amount: "0.25"},
+  {ingredient_id: 15, user_id: 1, measurement_id: 3, amount: "5.0"},
+  {ingredient_id: 61, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 62, user_id: 1, measurement_id: 1, amount: "8.0"},
+  {ingredient_id: 63, user_id: 1, measurement_id: 4, amount: "12.0"}
 ])
 Recipe.create!([
   {name: "Potato-Cheese Pie", directions: "<ol><li>Make the crust: Pulse the flour, sugar and salt in a food processor. Add 1 stick butter and pulse until combined. Add the remaining 2 sticks butter and pulse three times, or until the mixture resembles coarse meal. Add the vinegar, then gradually add 1/3 cup ice water through the feed tube, pulsing four times, until evenly combined. Squeeze the dough between your fingers. If it doesnt hold its shape, add up to 2 tablespoons ice water and pulse two more times (the dough should still be crumbly). Turn out onto a clean surface and press into a ball; divide in half, wrap in plastic wrap and flatten into two 1-inch-thick rectangles. Refrigerate at least 1 hour or up to 2 days.</li><li>Make the filling: Heat 2 tablespoons olive oil in a skillet over medium heat. Add the onion and cook until slightly brown, 5 to 7 minutes; season with salt and let cool. Slice the potatoes and apples very thinly; toss in a bowl with the thyme, the remaining 2 tablespoons olive oil, and salt and pepper to taste.</li><li>Line an 8-inch square baking dish with foil, leaving a 1-inch overhang on all sides. On a floured surface, roll out one piece of dough into a 12-inch square, about 1/8-inch thick. Transfer to the prepared dish, tucking the dough into the edges and corners; do not trim the overhang. Sprinkle the breadcrumbs over the dough and add the onion. Lay the mortadella on top, then sprinkle with about one-third of the cheese. Layer half of the potatoes and apples on top in a single layer, then sprinkle with another one-third of the cheese. Top with the remaining potatoes, apples and cheese.</li><li>Roll the remaining dough into a 12-inch square and place on top of the filling. Press the overhang of the two crusts together, then roll the dough under itself and pinch to make a 3/4-inch-high edge. Make slits in the top crust with a knife to allow steam to escape. Refrigerate 30 minutes. Meanwhile, preheat the oven to 425 degrees F.</li><li>Bake the pie until golden brown, about 30 minutes. Reduce the oven temperature to 400 degrees F, brush the crust with cream and continue baking until crisp, about 35 more minutes. Cool 25 minutes, then lift out of the pan and slice.</li></ol>", spoonacular_id: 657011, image: "https://spoonacular.com/recipeImages/Potato-Cheese-Pie-657011.jpg"},
@@ -162,6 +171,6 @@ Recipe.create!([
   {name: "Chicken in a Basil Cream Sauce", directions: "<ol><li>Cook spaghetti according to directions on package.</li><li>Meanwhile, heat olive oil in skillet over medium high heat. Remove chicken from package and sprinkle with salt and pepper.</li><li>Prepare breading station: In one flat bowl, add 1/2 c. flour, salt and pepper. In another flat bowl, add egg and 1 Tbs. water and mix well. In the third flat bowl, add the panko, 1/2 c. Parmesan cheese, 2 Tbs. chopped basil and salt and pepper.</li><li>Coat each piece of chicken by first dredging in flour mixture, next in egg mixture and finally in panko mixture.</li><li>Fry breaded chicken in oil 4-5 minutes per side.</li><li>While chicken is cooking, add heavy cream to saucepan and heat over medium-medium high heat until a small simmer begins. Immediately add 1/2 c. Parmesan cheese and stir to incorporate cheese.</li><li>Remove from heat and add basil.</li><li>Assemble the dish by placing a serving of pasta on the plate, top with one piece of chicken, pour 1/4 of sauce mixture over the top and sprinkle with 1/4 c. chopped tomato.</li><li>Garnish with additional chopped basil if desired.</li></ol>", spoonacular_id: 638118, image: "https://spoonacular.com/recipeImages/Chicken-in-a-Basil-Cream-Sauce-638118.jpg"}
 ])
 User.create!([
-  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO"},
-  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW"}
+  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"},
+  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW", phone: "+13128524472"}
 ])

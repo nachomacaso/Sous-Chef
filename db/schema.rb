@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030191848) do
+ActiveRecord::Schema.define(version: 20161108003809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,13 +37,9 @@ ActiveRecord::Schema.define(version: 20161030191848) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "category_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -55,14 +51,10 @@ ActiveRecord::Schema.define(version: 20161030191848) do
   create_table "pantry_ingredients", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "user_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "measurement_id"
-    t.decimal  "amount",             precision: 5, scale: 2
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.decimal  "amount",         precision: 5, scale: 2
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -89,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161030191848) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "phone"
   end
 
 end

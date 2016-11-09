@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -20,6 +19,8 @@ gem 'unirest'
 gem 'figaro'
 gem 'font-awesome-rails'
 gem 'vider', github: 'wazery/vider'
+gem 'twilio-ruby', '~> 4.13'
+gem 'rails_12factor', group: :production
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -1,5 +1,6 @@
 class RecipeIngredientsController < ApplicationController
   before_action :authenticate_user!
+
   def home
   end
 
@@ -28,12 +29,10 @@ class RecipeIngredientsController < ApplicationController
       if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length <= 3
         unless recipe["image"].nil?
           @green_light_recipes << recipe
-          @green_light_recipes = @green_light_recipes.sample(12)
         end
       elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.50 && recipe["missedIngredients"].length <= 5
         unless recipe["image"].nil? 
           @yellow_light_recipes << recipe
-          @yellow_light_recipes = @yellow_light_recipes.sample(12)
           @yellow_missing = recipe["missedIngredients"].length
         end
       end
@@ -67,10 +66,29 @@ class RecipeIngredientsController < ApplicationController
     @recipe = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/information?includeNutrition=false",
                           headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
 
-    @recipe_ingredients = @recipe["extendedIngredients"]
-
     @directions = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{params[:id]}/analyzedInstructions?stepBreakdown=true",
                               headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+    @recipe_ingredients = @recipe["extendedIngredients"]
+
+    @missing_ingredients = []
+    kitchen_ingredients = []
+    spoonacular_ingredients = []
+    user_pantry_ingredients = PantryIngredient.where(user_id: current_user.id)
+    user_pantry_ingredients.each do |user|
+      kitchen_ingredients << user.ingredient.name.downcase
+    end
+    @recipe_ingredients.each do |recipe|
+      spoonacular_ingredients << recipe["name"]
+    end
+    kitchen_ingredients.each do |kitchen_ingredient|
+      spoonacular_ingredients.each do |spoonacular_ingredient|
+        if spoonacular_ingredient.include?(kitchen_ingredient)
+          @missing_ingredients << spoonacular_ingredient
+        end
+      end
+    end
+    @missing_ingredients = spoonacular_ingredients - @missing_ingredients
 
     cookbook = CookBook.find_or_create_by(user_id: current_user.id)
 

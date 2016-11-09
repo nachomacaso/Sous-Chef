@@ -39,5 +39,8 @@
         <%= submit_tag 'Add To Cook Book', class:"btn btn-default" %>
       <% end %>
     <% end %>
+    <% unless @missing_ingredients.nil? %>
+      <button class="btn btn-twilio">Send Grocery List To Phone</button>
+    <% end %>
   </div>
 </section>
