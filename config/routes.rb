@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  post '/text' => 'send_text#trigger_sms_message'
+  post '/send_sms' => 'send_text#trigger_sms_message'
 end

@@ -1,3 +1,7 @@
+<%= ENV["twilio_account_sid"] %>
+<%= ENV["twilio_auth_token"] %>
+<%= ENV["twilio_phone_number"] %>
+
 <section id="recipe-show"> 
   <div class="container">
     <div class="row-show">
@@ -40,11 +44,7 @@
       <% end %>
     <% end %>
     <% unless @missing_ingredients.nil? %>
-    *********************************************
-      <%= link_to 'Text Missing Ingredients', "/text", method: :post %>
-    *********************************************
-      <button class="btn btn-twilio">Send Grocery List To Phone</button>
-    *********************************************
+      <%= link_to 'Text Missing Ingredients', "/send_sms", method: :post %>
     <% end %>
   </div>
 </section>

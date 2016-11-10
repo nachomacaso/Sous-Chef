@@ -13,8 +13,4 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require jquery.vide
-//= require recipe_index
-//= require twilio
-//= require ajax_ingredient
 //= require_tree .
