@@ -1,7 +1,3 @@
-User.create!([
-  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"},
-  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW", phone: "+13128524472"}
-])
 Category.create!([
   {aisle: "Milk, Eggs, Other Dairy"},
   {aisle: "Oil, Vinegar, Salad Dressing"},
@@ -13,9 +9,9 @@ Category.create!([
   {aisle: "Cheese"},
   {aisle: "Meat"}
 ])
-CookBook.create!([
-  {user_id: 1},
-  {user_id: 2}
+User.create!([
+  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"},
+  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW", phone: "+13128524472"}
 ])
 Ingredient.create!([
   {name: "Butter", category_id: 1},
@@ -166,6 +162,10 @@ Recipe.create!([
   {name: "Asparagus and Asiago Frittata", directions: "<ol><li>In a large bowl, combine the eggs, whipping cream, salt, pepper, and half the fresh thyme. Beat with a whisk until the eggs and cream are incorporated.</li><li>In an ovenproof saut pan over medium heat, add the butter and olive oil. When the mixture is hot, add the asparagus pieces and cook for 3-4 minutes, stirring. Add the garlic and cook for about a minute. Spread the asparagus so it is evenly distributed across the bottom of the pan.</li><li>Add the egg mixture to the pan and allow the eggs to cook without mixing them. Use a rubber spatula to run around the edges of the frittata as it cooks so the edges dont stick and burn. After 1-2 minutes, add the cheese evenly to the egg mixture.</li><li>When the outer edges of the frittata have set but the center is still slightly runny, arrange the cherry tomatoes and asparagus spears on the top of the frittata, sprinkle the remaining thyme over the top, then remove the pan from the heat and place it in an oven set to broil.</li><li>The broiler will allow the top portion of the egg mixture to set and cook thoroughly. Keep a close watch so the frittata doesnt burn.</li><li>After a few minutes, when the eggs have set completely and begin to turn golden, carefully remove the pan from the oven.</li><li>Use a rubber spatula to run around the edges and underside of the frittata, and slide it onto a round serving plate.</li><li>Slice and serve warm or at room temperature.</li></ol>", spoonacular_id: 632925, image: "https://spoonacular.com/recipeImages/Asparagus-and-Asiago-Frittata-632925.jpg"},
   {name: "Savoy Cabbage and Celery Root Soup with Leek Confit", directions: "<ol><li>Heat the olive oil in a heavy pot, such as a Le Creuset, over medium-high heat. Add the onion, celery root, garlic, scallion tops, and leek confit. Saut until the onion softens, about 15 minutes.</li><li>Add the apple, mustard, and rosemary, and cook for another couple of minutes. The mixture will be very aromatic.</li><li>Add the remaining ingredients and bring to a low simmer. Cover and simmer for 40 minutes. Adjust seasoning if needed.</li></ol>", spoonacular_id: 659513, image: "https://spoonacular.com/recipeImages/Savoy-Cabbage-and-Celery-Root-Soup-with-Leek-Confit-659513.jpg"},
   {name: "Chicken in a Basil Cream Sauce", directions: "<ol><li>Cook spaghetti according to directions on package.</li><li>Meanwhile, heat olive oil in skillet over medium high heat. Remove chicken from package and sprinkle with salt and pepper.</li><li>Prepare breading station: In one flat bowl, add 1/2 c. flour, salt and pepper. In another flat bowl, add egg and 1 Tbs. water and mix well. In the third flat bowl, add the panko, 1/2 c. Parmesan cheese, 2 Tbs. chopped basil and salt and pepper.</li><li>Coat each piece of chicken by first dredging in flour mixture, next in egg mixture and finally in panko mixture.</li><li>Fry breaded chicken in oil 4-5 minutes per side.</li><li>While chicken is cooking, add heavy cream to saucepan and heat over medium-medium high heat until a small simmer begins. Immediately add 1/2 c. Parmesan cheese and stir to incorporate cheese.</li><li>Remove from heat and add basil.</li><li>Assemble the dish by placing a serving of pasta on the plate, top with one piece of chicken, pour 1/4 of sauce mixture over the top and sprinkle with 1/4 c. chopped tomato.</li><li>Garnish with additional chopped basil if desired.</li></ol>", spoonacular_id: 638118, image: "https://spoonacular.com/recipeImages/Chicken-in-a-Basil-Cream-Sauce-638118.jpg"}
+])
+CookBook.create!([
+  {user_id: 1},
+  {user_id: 2}
 ])
 CookBookRecipe.create!([
   {cook_book_id: 1, rating: 4, recipe_id: 4},
