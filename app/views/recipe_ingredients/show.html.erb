@@ -40,7 +40,11 @@
       <% end %>
     <% end %>
     <% unless @missing_ingredients.nil? %>
+    *********************************************
+      <%= link_to 'Text Missing Ingredients', "/text", method: :post %>
+    *********************************************
       <button class="btn btn-twilio">Send Grocery List To Phone</button>
+    *********************************************
     <% end %>
   </div>
 </section>

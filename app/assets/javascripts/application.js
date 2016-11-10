@@ -16,7 +16,5 @@
 //= require jquery.vide
 //= require recipe_index
 //= require twilio
-//= require live_w_locator
-//= require quagga
 //= require ajax_ingredient
 //= require_tree .

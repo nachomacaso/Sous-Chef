@@ -1,3 +1,7 @@
+User.create!([
+  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"},
+  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW", phone: "+13128524472"}
+])
 Category.create!([
   {aisle: "Milk, Eggs, Other Dairy"},
   {aisle: "Oil, Vinegar, Salad Dressing"},
@@ -12,13 +16,6 @@ Category.create!([
 CookBook.create!([
   {user_id: 1},
   {user_id: 2}
-])
-CookBookRecipe.create!([
-  {cook_book_id: 1, rating: 4, recipe_id: 4},
-  {cook_book_id: 1, rating: 4, recipe_id: 5},
-  {cook_book_id: 1, rating: 5, recipe_id: 2},
-  {cook_book_id: 1, rating: 3, recipe_id: 1},
-  {cook_book_id: 1, rating: 3, recipe_id: 6}
 ])
 Ingredient.create!([
   {name: "Butter", category_id: 1},
@@ -170,7 +167,10 @@ Recipe.create!([
   {name: "Savoy Cabbage and Celery Root Soup with Leek Confit", directions: "<ol><li>Heat the olive oil in a heavy pot, such as a Le Creuset, over medium-high heat. Add the onion, celery root, garlic, scallion tops, and leek confit. Saut until the onion softens, about 15 minutes.</li><li>Add the apple, mustard, and rosemary, and cook for another couple of minutes. The mixture will be very aromatic.</li><li>Add the remaining ingredients and bring to a low simmer. Cover and simmer for 40 minutes. Adjust seasoning if needed.</li></ol>", spoonacular_id: 659513, image: "https://spoonacular.com/recipeImages/Savoy-Cabbage-and-Celery-Root-Soup-with-Leek-Confit-659513.jpg"},
   {name: "Chicken in a Basil Cream Sauce", directions: "<ol><li>Cook spaghetti according to directions on package.</li><li>Meanwhile, heat olive oil in skillet over medium high heat. Remove chicken from package and sprinkle with salt and pepper.</li><li>Prepare breading station: In one flat bowl, add 1/2 c. flour, salt and pepper. In another flat bowl, add egg and 1 Tbs. water and mix well. In the third flat bowl, add the panko, 1/2 c. Parmesan cheese, 2 Tbs. chopped basil and salt and pepper.</li><li>Coat each piece of chicken by first dredging in flour mixture, next in egg mixture and finally in panko mixture.</li><li>Fry breaded chicken in oil 4-5 minutes per side.</li><li>While chicken is cooking, add heavy cream to saucepan and heat over medium-medium high heat until a small simmer begins. Immediately add 1/2 c. Parmesan cheese and stir to incorporate cheese.</li><li>Remove from heat and add basil.</li><li>Assemble the dish by placing a serving of pasta on the plate, top with one piece of chicken, pour 1/4 of sauce mixture over the top and sprinkle with 1/4 c. chopped tomato.</li><li>Garnish with additional chopped basil if desired.</li></ol>", spoonacular_id: 638118, image: "https://spoonacular.com/recipeImages/Chicken-in-a-Basil-Cream-Sauce-638118.jpg"}
 ])
-User.create!([
-  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"},
-  {name: "joe", email: "joe@gmail.com", password_digest: "$2a$10$Zz1scXrbc8ejMOgjxXyNDO0YJykfah/VZCojzxK4X8aq2sQxebmKW", phone: "+13128524472"}
+CookBookRecipe.create!([
+  {cook_book_id: 1, rating: 4, recipe_id: 4},
+  {cook_book_id: 1, rating: 4, recipe_id: 5},
+  {cook_book_id: 1, rating: 5, recipe_id: 2},
+  {cook_book_id: 1, rating: 3, recipe_id: 1},
+  {cook_book_id: 1, rating: 3, recipe_id: 6}
 ])
