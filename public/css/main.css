@@ -666,6 +666,10 @@ figure.item:hover img {
     color: #000;
 }
 
+#recipe-show .show-img {
+    width: 600px;
+    height: 400px;
+}
 
 /* Ingredient Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

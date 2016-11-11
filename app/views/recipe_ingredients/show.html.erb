@@ -1,6 +1,4 @@
-<%= ENV["twilio_account_sid"] %>
-<%= ENV["twilio_auth_token"] %>
-<%= ENV["twilio_phone_number"] %>
+<%= @missing_ingredients %>
 
 <section id="recipe-show"> 
   <div class="container">
@@ -34,7 +32,7 @@
       <% end %>
       </h4>
       <br>
-      <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", method: :delete %>
+      <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", class:"btn btn-default", method: :delete %><br>
     <% else %>
       <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
         <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
@@ -43,8 +41,13 @@
         <%= submit_tag 'Add To Cook Book', class:"btn btn-default" %>
       <% end %>
     <% end %>
+    <br>
     <% unless @missing_ingredients.nil? %>
-      <%= link_to 'Text Missing Ingredients', "/send_sms", method: :post %>
+      <%= form_tag "/send_sms", method: :post do %>
+        <%= hidden_field_tag :to, @current_user.phone %>
+        <%= hidden_field_tag :body, @missing_ingredients.join(", ") %>
+        <%= submit_tag 'Text Missing Ingredients', class:"btn btn-default" %>
+      <% end %>
     <% end %>
   </div>
 </section>

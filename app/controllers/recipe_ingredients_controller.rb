@@ -83,7 +83,7 @@ class RecipeIngredientsController < ApplicationController
     end
     kitchen_ingredients.each do |kitchen_ingredient|
       spoonacular_ingredients.each do |spoonacular_ingredient|
-        if spoonacular_ingredient.include?(kitchen_ingredient)
+        if spoonacular_ingredient.include?(kitchen_ingredient.to_s)
           @missing_ingredients << spoonacular_ingredient
         end
       end
@@ -105,6 +105,7 @@ class RecipeIngredientsController < ApplicationController
     recipe = Recipe.find_by(spoonacular_id: params[:id])
     user_removed_cookbook = CookBookRecipe.find_by(recipe_id: recipe.id)
     user_removed_cookbook.destroy
+    recipe.destroy
 
     if user_removed_cookbook
       flash[:success] = 'Successfully removed recipe from cook book!'
