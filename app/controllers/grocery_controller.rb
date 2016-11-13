@@ -1,0 +1,3 @@
+class GroceryController < ApplicationController
+  
+end

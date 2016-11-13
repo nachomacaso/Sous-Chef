@@ -137,19 +137,20 @@
       </div>
       <div class="recipe-buttons">
         <% if @contained_in_cook_book == true %>
-          <h4>User Rating: 
+          <h4 align="right">User Rating: 
           <% @user_cookbook.rating.times do %>
             <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
           </h4>
           <br>
-          <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", class:"btn btn-info", method: :delete %><br>
+          <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", class:"btn btn-info", method: :delete %><br><br>
         <% else %>
-          <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
+          <%= form_tag "/recipes/#{@recipe["id"]}", align:"right", method: :post do %>
             <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
             <%= hidden_field_tag :recipe_id, @recipe["id"] %>
             <br><br>
             <%= submit_tag 'Add To Cook Book', class:"btn btn-info" %>
+            <br><br>
           <% end %>
         <% end %>
         <br>

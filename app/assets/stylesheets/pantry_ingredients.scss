@@ -21,3 +21,19 @@
 #ingredient .ingredient-name{
     color: #000;
 }
+
+.ingredient-header {
+    background: linear-gradient(#161615, transparent), url(/assets/spice-header.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#virtual-pantry {
+    background: linear-gradient(#161615, transparent), url(/assets/pantry.jpg) no-repeat;
+    padding: 50px 0;
+    color: #fff;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

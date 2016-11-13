@@ -1,3 +1,21 @@
+.recipe-header {
+    background: linear-gradient(#161615, transparent), url(/assets/pasta.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.recipe-show-header {
+    background: linear-gradient(#161615, transparent), url(/assets/recipe-show-header.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+    color: #FFF;
+}
+
 .background-image-holder img{
     vertical-align: middle;
     width: 425px;

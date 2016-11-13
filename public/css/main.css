@@ -428,13 +428,6 @@ h2 {
 
 /* Virtual Pantry Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#virtual-pantry {
-    background: linear-gradient(#161615, transparent), url(/assets/pantry.jpg) no-repeat;
-    padding: 50px 0;
-    color: #fff;
-    -webkit-background-size: cover;
-    background-size: cover;
-}
 
 #virtual-pantry h2 {
     text-align: center;
@@ -543,14 +536,6 @@ h2 {
 
 /* Recipes Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.recipe-header {
-    background: linear-gradient(#161615, transparent), url(/assets/pasta.jpg)  no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    padding: 50px 0;
-    text-align: center;
-    color: #fff;
-}
 
 #recipes {
     background: #161615;
@@ -611,11 +596,6 @@ figure.item:hover img {
 
 /* Cook Book Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#cookbook {
-    padding: 50px 0;
-    background: linear-gradient(#161615, transparent), url(/assets/cook-book.jpg) no-repeat;
-    color: #fff;
-}
 
 #cookbook h2 {
     text-align: center;
@@ -684,18 +664,14 @@ figure.item:hover img {
     padding-top: 25px;
 }
 
-.recipe-show-header {
-    background: linear-gradient(#161615, transparent), url(/assets/recipe-show-header.jpg)  no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    padding: 50px 0;
-    text-align: center;
-    color: #FFF;
+#recipe-show .btn-info {
+    float:right;
 }
 
 .recipe-buttons {
     position:relative;
     float:right;
+    right: 10%;
 }
 
 /* Ingredient Section
@@ -748,14 +724,6 @@ figure.item:hover img {
     margin: 0 auto;
     text-align: center;
     color: #000;
-}
-
-.ingredient-header {
-    background: linear-gradient(#161615, transparent), url(/assets/spice-header.jpg)  no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    padding: 50px 0;
-    text-align: center;
 }
 
 .ingredient-left-col p {

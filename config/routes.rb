@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   post '/send_sms' => 'send_text#trigger_sms_message'
+
+  get '/grocery' => 'grocery#grocery_map'
 end
