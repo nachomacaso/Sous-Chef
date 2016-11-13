@@ -6,7 +6,7 @@
       </div>
     </div>
   </div> 
-  <div class="container recipe-show">
+  <div class="container recipe-container">
     <div class="row-show">
       <div class="col-md-6 text-left">
         <ul>
@@ -28,138 +28,140 @@
     </div>
   </div>
   
-  <div class="col-md-8 show-directions">
-    <h4 align="right">Cook Time: <%= @recipe["readyInMinutes"] %> minutes</h4>
-    <h2>Directions</h2>
-    <% @directions.each do |direction| %>
-      <% direction["steps"].each do |step| %>
-        <p><%= step["number"] %>. <%= step["step"] %></p>
+  <div class="container directions-container">
+    <div class="col-md-8 show-directions">
+      <h4 align="right">Cook Time: <%= @recipe["readyInMinutes"] %> minutes</h4>
+      <h2>Directions</h2>
+      <% @directions.each do |direction| %>
+        <% direction["steps"].each do |step| %>
+          <p><%= step["number"] %>. <%= step["step"] %></p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="performance-facts">
+        <header class="performance-facts__header">
+          <h1 class="performance-facts__title">Nutrition Facts</h1>
+          <p>Serving Per Recipe <%= @recipe["servings"] %></p>
+        </header>
+        <table class="performance-facts__table">
+          <tbody>
+            <b>Calories</b>
+            <%= @recipe["nutrition"]["nutrients"][0]["amount"] %>
+            <tr class="thick-row">
+              <td colspan="3" class="small-info">
+                <b>% Daily Value*</b>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b>Total Fat</b>
+                <%= @recipe["nutrition"]["nutrients"][1]["amount"] %><%= @recipe["nutrition"]["nutrients"][1]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][1]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="blank-cell">
+              </td>
+              <th>
+                Saturated Fat
+                <%= @recipe["nutrition"]["nutrients"][2]["amount"] %><%= @recipe["nutrition"]["nutrients"][2]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][1]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b>Cholesterol</b>
+                <%= @recipe["nutrition"]["nutrients"][5]["amount"] %><%= @recipe["nutrition"]["nutrients"][5]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][5]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b>Sodium</b>
+                <%= @recipe["nutrition"]["nutrients"][6]["amount"] %><%= @recipe["nutrition"]["nutrients"][6]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][6]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b>Total Carbohydrate</b>
+                <%= @recipe["nutrition"]["nutrients"][3]["amount"] %><%= @recipe["nutrition"]["nutrients"][3]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][3]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="blank-cell">
+              </td>
+              <th>
+                Dietary Fiber
+                <%= @recipe["nutrition"]["nutrients"][18]["amount"] %><%= @recipe["nutrition"]["nutrients"][18]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][18]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr>
+              <td class="blank-cell">
+              </td>
+              <th>
+                Sugars
+                <%= @recipe["nutrition"]["nutrients"][4]["amount"] %><%= @recipe["nutrition"]["nutrients"][4]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][4]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+            <tr class="thick-end">
+              <th colspan="2">
+                <b>Protein</b>
+                <%= @recipe["nutrition"]["nutrients"][7]["amount"] %><%= @recipe["nutrition"]["nutrients"][7]["unit"] %>
+              </th>
+              <td>
+                <b><%= @recipe["nutrition"]["nutrients"][7]["percentOfDailyNeeds"] %>%</b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="recipe-buttons">
+        <% if @contained_in_cook_book == true %>
+          <h4>User Rating: 
+          <% @user_cookbook.rating.times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          </h4>
+          <br>
+          <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", class:"btn btn-info", method: :delete %><br>
+        <% else %>
+          <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
+            <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
+            <%= hidden_field_tag :recipe_id, @recipe["id"] %>
+            <br><br>
+            <%= submit_tag 'Add To Cook Book', class:"btn btn-info" %>
+          <% end %>
+        <% end %>
+        <br>
+        <% unless @missing_ingredients.nil? %>
+          <%= form_tag "/send_sms", method: :post do %>
+            <%= hidden_field_tag :to, @current_user.phone %>
+            <%= hidden_field_tag :body, @missing_ingredients.join(", ") %>
+            <%= submit_tag 'Text Missing Ingredients', class:"btn btn-info" %>
+          <% end %>
+        <% end %>
+        <br>
+      </div>
+    </div>
   </div>
 </section>
-
-<div class="col-md-4">
-  <div class="performance-facts">
-    <header class="performance-facts__header">
-      <h1 class="performance-facts__title">Nutrition Facts</h1>
-      <p>Serving Per Recipe <%= @recipe["servings"] %></p>
-    </header>
-    <table class="performance-facts__table">
-      <tbody>
-        <b>Calories</b>
-        <%= @recipe["nutrition"]["nutrients"][0]["amount"] %>
-        <tr class="thick-row">
-          <td colspan="3" class="small-info">
-            <b>% Daily Value*</b>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-            <b>Total Fat</b>
-            <%= @recipe["nutrition"]["nutrients"][1]["amount"] %><%= @recipe["nutrition"]["nutrients"][1]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][1]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <td class="blank-cell">
-          </td>
-          <th>
-            Saturated Fat
-            <%= @recipe["nutrition"]["nutrients"][2]["amount"] %><%= @recipe["nutrition"]["nutrients"][2]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][1]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-            <b>Cholesterol</b>
-            <%= @recipe["nutrition"]["nutrients"][5]["amount"] %><%= @recipe["nutrition"]["nutrients"][5]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][5]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-            <b>Sodium</b>
-            <%= @recipe["nutrition"]["nutrients"][6]["amount"] %><%= @recipe["nutrition"]["nutrients"][6]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][6]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">
-            <b>Total Carbohydrate</b>
-            <%= @recipe["nutrition"]["nutrients"][3]["amount"] %><%= @recipe["nutrition"]["nutrients"][3]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][3]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <td class="blank-cell">
-          </td>
-          <th>
-            Dietary Fiber
-            <%= @recipe["nutrition"]["nutrients"][18]["amount"] %><%= @recipe["nutrition"]["nutrients"][18]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][18]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr>
-          <td class="blank-cell">
-          </td>
-          <th>
-            Sugars
-            <%= @recipe["nutrition"]["nutrients"][4]["amount"] %><%= @recipe["nutrition"]["nutrients"][4]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][4]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-        <tr class="thick-end">
-          <th colspan="2">
-            <b>Protein</b>
-            <%= @recipe["nutrition"]["nutrients"][7]["amount"] %><%= @recipe["nutrition"]["nutrients"][7]["unit"] %>
-          </th>
-          <td>
-            <b><%= @recipe["nutrition"]["nutrients"][7]["percentOfDailyNeeds"] %>%</b>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="recipe-buttons">
-  <% if @contained_in_cook_book == true %>
-    <h4>User Rating: 
-    <% @user_cookbook.rating.times do %>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    <% end %>
-    </h4>
-    <br>
-    <%= link_to 'Remove From Cook Book', "/recipes/#{@recipe["id"]}", class:"btn btn-info", method: :delete %><br>
-  <% else %>
-    <%= form_tag "/recipes/#{@recipe["id"]}", method: :post do %>
-      <%= text_field_tag :rating, nil, placeholder: "Rate Me (1-5)" %>
-      <%= hidden_field_tag :recipe_id, @recipe["id"] %>
-      <br><br>
-      <%= submit_tag 'Add To Cook Book', class:"btn btn-info" %>
-    <% end %>
-  <% end %>
-  <br>
-  <% unless @missing_ingredients.nil? %>
-    <%= form_tag "/send_sms", method: :post do %>
-      <%= hidden_field_tag :to, @current_user.phone %>
-      <%= hidden_field_tag :body, @missing_ingredients.join(", ") %>
-      <%= submit_tag 'Text Missing Ingredients', class:"btn btn-info" %>
-    <% end %>
-  <% end %>
-  <br>
-</div>

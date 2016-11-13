@@ -654,10 +654,11 @@ figure.item:hover img {
 
 /* Recipe Show Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#recipe-show  {
+.recipe-container  {
     background: #161615;
     color: #fff;
     padding-bottom: 10px;
+    width: 100%;
 }
 
 #recipe-show  ul {
@@ -689,12 +690,13 @@ figure.item:hover img {
     background-size: cover;
     padding: 50px 0;
     text-align: center;
+    color: #FFF;
 }
 
-.recipe-show-buttons {
-    position: absolute;
-    right:    0;
-    bottom:   0;
+.recipe-buttons {
+    position:relative;
+    float:left;
+    left: 30%;
 }
 
 /* Ingredient Section

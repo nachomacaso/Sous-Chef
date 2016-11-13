@@ -15,9 +15,10 @@ p {
 .performance-facts {
   border: 1px solid black;
   margin: 20px;
-  float: left;
+  float: right;
   width: 280px;
   padding: 0.5rem;
+  position:relative;
   table {
     border-collapse: collapse;
   }
