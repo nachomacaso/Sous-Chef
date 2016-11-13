@@ -1,17 +1,16 @@
-<!-- Reservation section starts -->
-<section id="reservation" class="clearfix reservation">
-  <div class="reserve-header">
+<section id="ingredient" class="clearfix ingredient">
+  <div class="ingredient-header">
     <div class="container">
       <div class="col-sm-6 f-n center-block">
-        <h2>Edit <%= @pantry_ingredient.ingredient.name %></h2>
+        <h2>Edit Ingredient</h2>
       </div>
     </div>
   </div>
 
-  <div class="container reservation-container">
+  <div class="container ingredient-container">
     <div class="row">
-    <!-- Reservation form starts -->
-      <div class="col-md-5 reservation-form">
+      <div class="col-md-5 ingredient-form">
+        <h2 class="ingredient-name"><%= @pantry_ingredient.ingredient.name %></h2>
         <%= form_tag "/pantry/#{@pantry_ingredient.id}", class:"form-custom", method: :patch do %>
           <div class="form-group">
             <label class="sr-only" for="amount">Amount</label>
@@ -31,9 +30,9 @@
 
           <%= submit_tag 'Save Changes', class: "btn btn-block btn-primary" %>
         <% end %>
-      </div> <!-- Reservation form ends -->
+      </div> <!-- ingredient form ends -->
       
       <hr class="visible-sm">
     </div>
   </div>
-</section> <!-- Reservation section ends -->
+</section> <!-- ingredient section ends -->

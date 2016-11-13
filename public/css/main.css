@@ -542,12 +542,17 @@ h2 {
 
 /* Recipes Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.recipe-header {
+    background: linear-gradient(#161615, transparent), url(/assets/pasta.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+}
 
 #recipes {
-    padding-top: 50px;
-    padding: 50px 0;
-    background: url(/assets/pasta.jpg);
-    color: #fff;
+    background: #161615;
 }
 
 #recipes h2 {
@@ -622,6 +627,7 @@ figure.item:hover img {
 
 .user-recipes {
     margin-bottom: 40px;
+    background: #161615;
 }
 
 .user-recipes h4 {
@@ -661,14 +667,32 @@ figure.item:hover img {
     color: #000;
 }
 
-#recipe-show  .directions {
-    background: #fff;
+#recipe-show  .show-directions {
     color: #000;
+    padding: 15px;
 }
 
 #recipe-show .show-img {
     width: 600px;
     height: 400px;
+}
+
+#recipe-show .container {
+    padding-top: 25px;
+}
+
+.recipe-show-header {
+    background: linear-gradient(#161615, transparent), url(/assets/recipe-show-header.jpg)  no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.recipe-show-buttons {
+    left: 0;
+    bottom: 0;
+    align: right;
 }
 
 /* Ingredient Section
@@ -699,6 +723,13 @@ figure.item:hover img {
     color: #fff;
 }
 
+.ingredient h2.edit {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    color: #000;
+}
+
 .ingredient h4 {
     margin: 0 auto;
     text-align: center;
@@ -713,7 +744,7 @@ figure.item:hover img {
 }
 
 .ingredient-header {
-    background: linear-gradient(#161615, transparent), url(/assets/spice.jpg)  no-repeat;
+    background: linear-gradient(#161615, transparent), url(/assets/spice-header.jpg)  no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;

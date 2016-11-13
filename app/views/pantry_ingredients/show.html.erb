@@ -1,12 +1,29 @@
-<h3>Ingredient:  <%= @pantry_ingredient.ingredient.name %></h3>
-
-<h4>Amount:  
-<% if @pantry_ingredient.amount > 1 %>
-  <%= @pantry_ingredient.amount %> <%= @pantry_ingredient.measurement.unit.pluralize %>
-<% else %>
-  <%= @pantry_ingredient.amount %> <%= @pantry_ingredient.measurement.unit %>
-<% end %>
-</h4>
-
-<%= link_to 'Delete', "/pantry/#{@pantry_ingredient.id}", method: :delete %>
-<%= link_to 'Edit', "/pantry/#{@pantry_ingredient.id}/edit" %>
+<section id="ingredient-show"> 
+  <div class="container">
+    <div class="row-show">
+      <div class="col-md-6 ingredient-name">
+        <h2><%= @pantry_ingredient.ingredient.name %></h2>
+        <ul>
+          <li>
+          Amount: 
+          <% if @pantry_ingredient.amount > 1 && @pantry_ingredient.measurement.unit == " " %>
+            <%= @pantry_ingredient.amount %> <%= @pantry_ingredient.ingredient.name.pluralize %>
+          <% elsif @pantry_ingredient.amount > 1 %>
+            <%= @pantry_ingredient.amount %> <%= @pantry_ingredient.measurement.unit.pluralize %> <%= @pantry_ingredient.ingredient.name %>
+          <% elsif @pantry_ingredient.amount < 1 %>
+            <%= Rational(@pantry_ingredient.amount) %> <%= @pantry_ingredient.measurement.unit.pluralize %> <%= @pantry_ingredient.ingredient.name %>   
+          <% else %>
+            <%= @pantry_ingredient.amount %> <%= @pantry_ingredient.measurement.unit %> <%= @pantry_ingredient.ingredient.name %>  
+          <% end %>   
+          </li>
+        </ul>
+        <br>
+        <%= link_to 'Delete', "/pantry/#{@pantry_ingredient.id}", class:"btn btn-default", method: :delete %>
+        <%= link_to 'Edit', "/pantry/#{@pantry_ingredient.id}/edit", class:"btn btn-default"  %>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag("mediterranean.jpg") %>
+      </div>
+    </div>
+  </div>
+</section>
