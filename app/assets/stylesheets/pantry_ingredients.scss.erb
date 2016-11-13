@@ -23,7 +23,7 @@
 }
 
 .ingredient-header {
-    background: linear-gradient(#161615, transparent), url(/assets/spice-header.jpg)  no-repeat;
+    background: linear-gradient(#161615, transparent), url("<%= asset_path('spice-header.jpg') %>") no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -31,7 +31,7 @@
 }
 
 #virtual-pantry {
-    background: linear-gradient(#161615, transparent), url(/assets/pantry.jpg) no-repeat;
+    background: linear-gradient(#161615, transparent), url("<%= asset_path('pantry.jpg') %>") no-repeat;
     padding: 50px 0;
     color: #fff;
     -webkit-background-size: cover;
