@@ -12,20 +12,6 @@ Category.create!([
   {aisle: "Cheese"},
   {aisle: "Meat"}
 ])
-Measurement.create!([
-  {unit: " "},
-  {unit: "serving"},
-  {unit: "teaspoon"},
-  {unit: "tablespoon"},
-  {unit: "cup"},
-  {unit: "fluid ounce"},
-  {unit: "teaspoon"},
-  {unit: "pint"},
-  {unit: "quart"},
-  {unit: "gallon"},
-  {unit: "ounce"},
-  {unit: "pound"}
-])
 Ingredient.create!([
   {name: "Olive Oil", category_id: 2},
   {name: "Dijon Mustard", category_id: 2},
@@ -81,6 +67,20 @@ Ingredient.create!([
   {name: "Pork Shoulder", category_id: 9},
   {name: "Skirt Steak", category_id: 9},
   {name: "Beef Chuck", category_id: 9}
+])
+Measurement.create!([
+  {unit: " "},
+  {unit: "serving"},
+  {unit: "teaspoon"},
+  {unit: "tablespoon"},
+  {unit: "cup"},
+  {unit: "fluid ounce"},
+  {unit: "teaspoon"},
+  {unit: "pint"},
+  {unit: "quart"},
+  {unit: "gallon"},
+  {unit: "ounce"},
+  {unit: "pound"}
 ])
 PantryIngredient.create!([
   {ingredient_id: 41, user_id: 1, measurement_id: 1, amount: "2.0"},
