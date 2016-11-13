@@ -1,3 +1,6 @@
+User.create!([
+  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"}
+])
 Category.create!([
   {aisle: "Milk, Eggs, Other Dairy"},
   {aisle: "Oil, Vinegar, Salad Dressing"},
@@ -9,13 +12,19 @@ Category.create!([
   {aisle: "Cheese"},
   {aisle: "Meat"}
 ])
-CookBook.create!([
-  {user_id: 1}
-])
-CookBookRecipe.create!([
-  {cook_book_id: 1, rating: 5, recipe_id: 1},
-  {cook_book_id: 1, rating: 4, recipe_id: 2},
-  {cook_book_id: 1, rating: 3, recipe_id: 3}
+Measurement.create!([
+  {unit: " "},
+  {unit: "serving"},
+  {unit: "teaspoon"},
+  {unit: "tablespoon"},
+  {unit: "cup"},
+  {unit: "fluid ounce"},
+  {unit: "teaspoon"},
+  {unit: "pint"},
+  {unit: "quart"},
+  {unit: "gallon"},
+  {unit: "ounce"},
+  {unit: "pound"}
 ])
 Ingredient.create!([
   {name: "Olive Oil", category_id: 2},
@@ -72,20 +81,6 @@ Ingredient.create!([
   {name: "Pork Shoulder", category_id: 9},
   {name: "Skirt Steak", category_id: 9},
   {name: "Beef Chuck", category_id: 9}
-])
-Measurement.create!([
-  {unit: " "},
-  {unit: "serving"},
-  {unit: "teaspoon"},
-  {unit: "tablespoon"},
-  {unit: "cup"},
-  {unit: "fluid ounce"},
-  {unit: "teaspoon"},
-  {unit: "pint"},
-  {unit: "quart"},
-  {unit: "gallon"},
-  {unit: "ounce"},
-  {unit: "pound"}
 ])
 PantryIngredient.create!([
   {ingredient_id: 41, user_id: 1, measurement_id: 1, amount: "2.0"},
@@ -145,6 +140,11 @@ Recipe.create!([
   {name: "Chicken with Cherry Tomato Heavy Cream Sauce", directions: "<ol><li>1. Season chicken with salt and pepper. Dip each piece into panko, patting the crumbs down so they stick well.</li><li>2. In a bowl combine butter, garlic oregano and paprika. Mix until smooth. Add salt and pepper to taste.</li><li>3. Over medium-high heat add 1 tablespoon butter and 2 tablespoons olive oil. Add chicken, in a single layer and cook until lightly browned on each side (3-5 minutes per side). Remove chicken from skillet and loosely cover with aluminum foil.</li><li>4. Add onion to the pan and cook until translucent, a few minutes. Remove.</li><li>5. Increase heat to high and add tomatoes. Cook for 5 minutes, stirring occasionally, until tomatoes are slightly charred, add remaining butter, and then using a spoon lightly push down on the tomatoes to release the juices.</li><li>6. Reduce heat to medium-low, add heavy cream to pan, stirring to incorporate tomatoes. Cook for 1-2 minutes more.</li><li>7. To serve slice chicken breasts, top with tomato cream sauce and fresh chopped parsley.</li></ol>", spoonacular_id: 638431, image: "https://spoonacular.com/recipeImages/Chicken-with-Cherry-Tomato-Heavy-Cream-Sauce-638431.jpg"},
   {name: "Stuffed Baby Eggplant", directions: "<ol><li>Make Sauce: Drain tomatoes, reserving juice, then finely chop. Heat oil in a 4  5 quart heavy pot over medium heat until hot but not smoking, then cook garlic, stirring until golden brown, about 1 minute. Add tomatoes with reserved juice, water, tomato paste, sugar and salt and bring to a boil. Reduce heat and simmer, uncovered, stirring occasionally, until thickened, about 30 minutes. Stir in basil.</li><li>Eggplants and Stuffing: Bring a 5  6 quart pot of salted water to a boil over moderately high heat. Boil eggplants, uncovered, stirring occasionally, until tender when pierced with a pairing knife, 20  25 minutes. (Meg note: I stood over the stove and had to use a large slotted spoon to twirl the eggplants in the boiling water to cook both sides since they decided to float. Perhaps this was unnecessary? Let me know how you got them to sink or if you just left them alone and they turned out ok.) Using a slotted spoon, transfer the eggplants to a colander to drain. Discard cooking water. When eggplants are cool enough to handle, about 15  20 minutes, halve eggplants lengthwise through the stem, but keeping the stem attached. With a small knife (Meg note: it is easier to cut around the edges of the eggplant with a pairing knife and use a spoon to scrape out the flesh), scoop out and reserve flesh, leaving 1/4-inch thick shells. Very finely chop flesh and transfer to a large bowl.</li><li>Bring rice and water to a boil in a 1-quart saucepan, uncovered, then reduce heat and simmer rice, covered, until water has be absorbed and rice is tender, about 15 minutes. Remove from heat and let stand for 5 minutes. Fluff rice with a fork and add to the chopped eggplant.</li><li>Add breadcrumbs to the rice and eggplant mixture along with the garlic, eggs, cheese, parsley, basil, 1/2 teaspoon salt, 1/2 teaspoon pepper and stir to combine well.</li><li>Sprinkle inside of eggplant shells with remaining 1/2 teaspoon of salt and 1/2 teaspoon pepper. Firmly pack the stuffing into the eggplant shells, about 1/3-cup. (You will probably have some stuffing leftover.)</li><li>Fry and bake eggplants: Position oven rack in the middle and preheat oven to 375F.</li><li>Heat 1-inch vegetable oil in a large 3  4 quart heavy skillet over medium heat until a thermometer reaches 320F and add 4  5 eggplant halves, stuffing side up. Fry, turning over once using 2 slotted spoons until golden brown, about 3  5 minutes on each side. Transfer stuffing side up to a paper towel lined plate to drain, then fry remaining eggplant halves in the same manner, returning oil to 320F between batches.</li><li>Spoon sauce into a 3-quart (139-inch) nonreactive baking dish. Add eggplants, stuffing sides up and bake, covered with foil, until sauce is bubbling, 20  30 minutes.</li><li>Serve.</li></ol>", spoonacular_id: 661967, image: "https://spoonacular.com/recipeImages/Stuffed-Baby-Eggplant-661967.jpg"}
 ])
-User.create!([
-  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"}
+CookBook.create!([
+  {user_id: 1}
+])
+CookBookRecipe.create!([
+  {cook_book_id: 1, rating: 5, recipe_id: 1},
+  {cook_book_id: 1, rating: 4, recipe_id: 2},
+  {cook_book_id: 1, rating: 3, recipe_id: 3}
 ])

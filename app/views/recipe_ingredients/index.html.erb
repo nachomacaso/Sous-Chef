@@ -14,7 +14,7 @@
         <% recipe_row.each do |recipe| %>
           <div class="Image_Wrapper" data-caption="
             <a href='/recipes/<%= recipe['id'] %>''><%= recipe['title'] %></a>">
-              <img src="<%= recipe["image"] %>" />
+              <%= image_tag(recipe["image"]) %>
             </a>
           </div>
         <% end %>
@@ -37,7 +37,7 @@
           <div class="Image_Wrapper" data-caption="
             <a href='/recipes/<%= recipe['id'] %>''><%= recipe['title'] %> <br>Missing Ingredients: <%= recipe['missedIngredients'].length %></a>">
             <a href="/recipes/<%= recipe["id"] %>">
-              <img src="<%= recipe["image"] %>" />
+              <%= image_tag(recipe["image"]) %>
             </a>
           </div>
         <% end %>
