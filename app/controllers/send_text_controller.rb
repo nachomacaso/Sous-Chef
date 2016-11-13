@@ -9,7 +9,7 @@ class SendTextController < ApplicationController
     @client.account.messages.create({
       from: twilio_phone, 
       to: params[:to], 
-      body: "Here are the ingredients your are missing:  #{params[:body]}"
+      body: "Thanks for using Sous-Chef!  Here are the ingredients your are missing:  #{params[:body]}"
     }) 
 
     redirect_to "/recipes"

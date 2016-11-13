@@ -695,8 +695,7 @@ figure.item:hover img {
 
 .recipe-buttons {
     position:relative;
-    float:left;
-    left: 30%;
+    float:right;
 }
 
 /* Ingredient Section
@@ -704,6 +703,10 @@ figure.item:hover img {
 
 .ingredient {
     text-align: center;
+}
+
+#ingredient-show {
+    height: 100%;
 }
 
 .ingredient-header p {
