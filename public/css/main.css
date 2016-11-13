@@ -641,6 +641,10 @@ figure.item:hover img {
     width: 100%;
 }
 
+#recipe-show {
+    padding-bottom: 20px;
+}
+
 #recipe-show  ul {
     color: #fff;
 }
