@@ -49,8 +49,9 @@
 /* Basic
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-body {
+html, body {
     font-family: 'Roboto', "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 100%;
 }
 
 button {
@@ -675,6 +676,7 @@ figure.item:hover img {
 #recipe-show .show-img {
     width: 600px;
     height: 400px;
+    border-radius: 5px;
 }
 
 #recipe-show .container {
@@ -690,9 +692,9 @@ figure.item:hover img {
 }
 
 .recipe-show-buttons {
-    left: 0;
-    bottom: 0;
-    align: right;
+    position: absolute;
+    right:    0;
+    bottom:   0;
 }
 
 /* Ingredient Section
@@ -813,6 +815,9 @@ footer {
     color: #fff;
     padding: 18px;
     text-align: center;
+    width: 100%;
+    bottom: 0;
+    left: 0;
 }
 
 footer p {

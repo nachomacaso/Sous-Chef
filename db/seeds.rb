@@ -9,6 +9,14 @@ Category.create!([
   {aisle: "Cheese"},
   {aisle: "Meat"}
 ])
+CookBook.create!([
+  {user_id: 1}
+])
+CookBookRecipe.create!([
+  {cook_book_id: 1, rating: 5, recipe_id: 1},
+  {cook_book_id: 1, rating: 4, recipe_id: 2},
+  {cook_book_id: 1, rating: 3, recipe_id: 3}
+])
 Ingredient.create!([
   {name: "Olive Oil", category_id: 2},
   {name: "Dijon Mustard", category_id: 2},
@@ -62,7 +70,8 @@ Ingredient.create!([
   {name: "Ground Beef", category_id: 9},
   {name: "Chicken Breast", category_id: 9},
   {name: "Pork Shoulder", category_id: 9},
-  {name: "Skirt Steak", category_id: 9}
+  {name: "Skirt Steak", category_id: 9},
+  {name: "Beef Chuck", category_id: 9}
 ])
 Measurement.create!([
   {unit: " "},
@@ -78,61 +87,64 @@ Measurement.create!([
   {unit: "ounce"},
   {unit: "pound"}
 ])
-User.create!([
-  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"}
-])
 PantryIngredient.create!([
-  {ingredient_id: 1, user_id: 1, measurement_id: 3, amount: "16.0"},
-  {ingredient_id: 2, user_id: 1, measurement_id: 9, amount: "1.0"},
-  {ingredient_id: 3, user_id: 1, measurement_id: 7, amount: "2.0"},
-  {ingredient_id: 4, user_id: 1, measurement_id: 4, amount: "50.0"},
-  {ingredient_id: 5, user_id: 1, measurement_id: 4, amount: "50.0"},
-  {ingredient_id: 6, user_id: 1, measurement_id: 4, amount: "10.0"},
-  {ingredient_id: 7, user_id: 1, measurement_id: 4, amount: "5.0"},
-  {ingredient_id: 8, user_id: 1, measurement_id: 4, amount: "2.0"},
-  {ingredient_id: 9, user_id: 1, measurement_id: 4, amount: "2.0"},
-  {ingredient_id: 10, user_id: 1, measurement_id: 3, amount: "5.0"},
-  {ingredient_id: 11, user_id: 1, measurement_id: 4, amount: "15.0"},
-  {ingredient_id: 12, user_id: 1, measurement_id: 4, amount: "25.0"},
-  {ingredient_id: 13, user_id: 1, measurement_id: 1, amount: "2.0"},
-  {ingredient_id: 14, user_id: 1, measurement_id: 1, amount: "3.0"},
-  {ingredient_id: 15, user_id: 1, measurement_id: 11, amount: "5.0"},
-  {ingredient_id: 16, user_id: 1, measurement_id: 1, amount: "2.0"},
-  {ingredient_id: 17, user_id: 1, measurement_id: 1, amount: "3.0"},
-  {ingredient_id: 18, user_id: 1, measurement_id: 1, amount: "2.0"},
-  {ingredient_id: 19, user_id: 1, measurement_id: 1, amount: "2.0"},
-  {ingredient_id: 20, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 21, user_id: 1, measurement_id: 1, amount: "5.0"},
-  {ingredient_id: 22, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 23, user_id: 1, measurement_id: 1, amount: "5.0"},
-  {ingredient_id: 24, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 25, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 26, user_id: 1, measurement_id: 4, amount: "5.0"},
-  {ingredient_id: 27, user_id: 1, measurement_id: 4, amount: "5.0"},
-  {ingredient_id: 28, user_id: 1, measurement_id: 4, amount: "5.0"},
-  {ingredient_id: 29, user_id: 1, measurement_id: 1, amount: "12.0"},
-  {ingredient_id: 30, user_id: 1, measurement_id: 8, amount: "1.0"},
-  {ingredient_id: 31, user_id: 1, measurement_id: 11, amount: "1.0"},
-  {ingredient_id: 32, user_id: 1, measurement_id: 11, amount: "2.0"},
-  {ingredient_id: 33, user_id: 1, measurement_id: 11, amount: "8.0"},
-  {ingredient_id: 34, user_id: 1, measurement_id: 11, amount: "5.0"},
-  {ingredient_id: 35, user_id: 1, measurement_id: 11, amount: "0.25"},
-  {ingredient_id: 36, user_id: 1, measurement_id: 4, amount: "5.0"},
-  {ingredient_id: 37, user_id: 1, measurement_id: 4, amount: "1.0"},
-  {ingredient_id: 38, user_id: 1, measurement_id: 1, amount: "2.0"},
-  {ingredient_id: 39, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 40, user_id: 1, measurement_id: 1, amount: "1.0"},
   {ingredient_id: 41, user_id: 1, measurement_id: 1, amount: "2.0"},
   {ingredient_id: 42, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 43, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 44, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 45, user_id: 1, measurement_id: 5, amount: "6.0"},
-  {ingredient_id: 46, user_id: 1, measurement_id: 5, amount: "8.0"},
-  {ingredient_id: 47, user_id: 1, measurement_id: 11, amount: "0.25"},
-  {ingredient_id: 48, user_id: 1, measurement_id: 11, amount: "0.25"},
-  {ingredient_id: 49, user_id: 1, measurement_id: 3, amount: "5.0"},
-  {ingredient_id: 50, user_id: 1, measurement_id: 1, amount: "1.0"},
-  {ingredient_id: 51, user_id: 1, measurement_id: 1, amount: "8.0"},
-  {ingredient_id: 52, user_id: 1, measurement_id: 4, amount: "12.0"},
-  {ingredient_id: 53, user_id: 1, measurement_id: 1, amount: "8.0"}
+  {ingredient_id: 50, user_id: 1, measurement_id: 12, amount: "1.0"},
+  {ingredient_id: 53, user_id: 1, measurement_id: 12, amount: "1.0"},
+  {ingredient_id: 51, user_id: 1, measurement_id: 12, amount: "2.0"},
+  {ingredient_id: 52, user_id: 1, measurement_id: 12, amount: "5.0"},
+  {ingredient_id: 24, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 25, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 26, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 27, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 28, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 29, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 30, user_id: 1, measurement_id: 1, amount: "2.0"},
+  {ingredient_id: 31, user_id: 1, measurement_id: 1, amount: "2.0"},
+  {ingredient_id: 32, user_id: 1, measurement_id: 1, amount: "3.0"},
+  {ingredient_id: 33, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 34, user_id: 1, measurement_id: 2, amount: "1.0"},
+  {ingredient_id: 35, user_id: 1, measurement_id: 4, amount: "5.0"},
+  {ingredient_id: 36, user_id: 1, measurement_id: 2, amount: "1.0"},
+  {ingredient_id: 37, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 38, user_id: 1, measurement_id: 1, amount: "1.0"},
+  {ingredient_id: 39, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 40, user_id: 1, measurement_id: 2, amount: "1.0"},
+  {ingredient_id: 15, user_id: 1, measurement_id: 5, amount: "5.0"},
+  {ingredient_id: 16, user_id: 1, measurement_id: 5, amount: "5.0"},
+  {ingredient_id: 17, user_id: 1, measurement_id: 5, amount: "3.0"},
+  {ingredient_id: 18, user_id: 1, measurement_id: 5, amount: "2.0"},
+  {ingredient_id: 19, user_id: 1, measurement_id: 5, amount: "2.0"},
+  {ingredient_id: 20, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 21, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 22, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 23, user_id: 1, measurement_id: 4, amount: "2.0"},
+  {ingredient_id: 44, user_id: 1, measurement_id: 5, amount: "3.0"},
+  {ingredient_id: 45, user_id: 1, measurement_id: 5, amount: "3.0"},
+  {ingredient_id: 46, user_id: 1, measurement_id: 5, amount: "3.0"},
+  {ingredient_id: 47, user_id: 1, measurement_id: 1, amount: "12.0"},
+  {ingredient_id: 48, user_id: 1, measurement_id: 8, amount: "1.0"},
+  {ingredient_id: 49, user_id: 1, measurement_id: 4, amount: "8.0"},
+  {ingredient_id: 1, user_id: 1, measurement_id: 10, amount: "1.0"},
+  {ingredient_id: 2, user_id: 1, measurement_id: 8, amount: "1.0"},
+  {ingredient_id: 8, user_id: 1, measurement_id: 9, amount: "5.0"},
+  {ingredient_id: 3, user_id: 1, measurement_id: 9, amount: "1.0"},
+  {ingredient_id: 4, user_id: 1, measurement_id: 8, amount: "1.0"},
+  {ingredient_id: 5, user_id: 1, measurement_id: 9, amount: "1.0"},
+  {ingredient_id: 6, user_id: 1, measurement_id: 6, amount: "3.0"},
+  {ingredient_id: 9, user_id: 1, measurement_id: 5, amount: "12.0"},
+  {ingredient_id: 10, user_id: 1, measurement_id: 5, amount: "12.0"},
+  {ingredient_id: 11, user_id: 1, measurement_id: 2, amount: "2.0"},
+  {ingredient_id: 12, user_id: 1, measurement_id: 2, amount: "1.0"},
+  {ingredient_id: 13, user_id: 1, measurement_id: 2, amount: "1.0"},
+  {ingredient_id: 14, user_id: 1, measurement_id: 12, amount: "1.0"}
+])
+Recipe.create!([
+  {name: "Potato-Cheese Pie", directions: "<ol><li>Make the crust: Pulse the flour, sugar and salt in a food processor. Add 1 stick butter and pulse until combined. Add the remaining 2 sticks butter and pulse three times, or until the mixture resembles coarse meal. Add the vinegar, then gradually add 1/3 cup ice water through the feed tube, pulsing four times, until evenly combined. Squeeze the dough between your fingers. If it doesnt hold its shape, add up to 2 tablespoons ice water and pulse two more times (the dough should still be crumbly). Turn out onto a clean surface and press into a ball; divide in half, wrap in plastic wrap and flatten into two 1-inch-thick rectangles. Refrigerate at least 1 hour or up to 2 days.</li><li>Make the filling: Heat 2 tablespoons olive oil in a skillet over medium heat. Add the onion and cook until slightly brown, 5 to 7 minutes; season with salt and let cool. Slice the potatoes and apples very thinly; toss in a bowl with the thyme, the remaining 2 tablespoons olive oil, and salt and pepper to taste.</li><li>Line an 8-inch square baking dish with foil, leaving a 1-inch overhang on all sides. On a floured surface, roll out one piece of dough into a 12-inch square, about 1/8-inch thick. Transfer to the prepared dish, tucking the dough into the edges and corners; do not trim the overhang. Sprinkle the breadcrumbs over the dough and add the onion. Lay the mortadella on top, then sprinkle with about one-third of the cheese. Layer half of the potatoes and apples on top in a single layer, then sprinkle with another one-third of the cheese. Top with the remaining potatoes, apples and cheese.</li><li>Roll the remaining dough into a 12-inch square and place on top of the filling. Press the overhang of the two crusts together, then roll the dough under itself and pinch to make a 3/4-inch-high edge. Make slits in the top crust with a knife to allow steam to escape. Refrigerate 30 minutes. Meanwhile, preheat the oven to 425 degrees F.</li><li>Bake the pie until golden brown, about 30 minutes. Reduce the oven temperature to 400 degrees F, brush the crust with cream and continue baking until crisp, about 35 more minutes. Cool 25 minutes, then lift out of the pan and slice.</li></ol>", spoonacular_id: 657011, image: "https://spoonacular.com/recipeImages/Potato-Cheese-Pie-657011.jpg"},
+  {name: "Chicken with Cherry Tomato Heavy Cream Sauce", directions: "<ol><li>1. Season chicken with salt and pepper. Dip each piece into panko, patting the crumbs down so they stick well.</li><li>2. In a bowl combine butter, garlic oregano and paprika. Mix until smooth. Add salt and pepper to taste.</li><li>3. Over medium-high heat add 1 tablespoon butter and 2 tablespoons olive oil. Add chicken, in a single layer and cook until lightly browned on each side (3-5 minutes per side). Remove chicken from skillet and loosely cover with aluminum foil.</li><li>4. Add onion to the pan and cook until translucent, a few minutes. Remove.</li><li>5. Increase heat to high and add tomatoes. Cook for 5 minutes, stirring occasionally, until tomatoes are slightly charred, add remaining butter, and then using a spoon lightly push down on the tomatoes to release the juices.</li><li>6. Reduce heat to medium-low, add heavy cream to pan, stirring to incorporate tomatoes. Cook for 1-2 minutes more.</li><li>7. To serve slice chicken breasts, top with tomato cream sauce and fresh chopped parsley.</li></ol>", spoonacular_id: 638431, image: "https://spoonacular.com/recipeImages/Chicken-with-Cherry-Tomato-Heavy-Cream-Sauce-638431.jpg"},
+  {name: "Stuffed Baby Eggplant", directions: "<ol><li>Make Sauce: Drain tomatoes, reserving juice, then finely chop. Heat oil in a 4  5 quart heavy pot over medium heat until hot but not smoking, then cook garlic, stirring until golden brown, about 1 minute. Add tomatoes with reserved juice, water, tomato paste, sugar and salt and bring to a boil. Reduce heat and simmer, uncovered, stirring occasionally, until thickened, about 30 minutes. Stir in basil.</li><li>Eggplants and Stuffing: Bring a 5  6 quart pot of salted water to a boil over moderately high heat. Boil eggplants, uncovered, stirring occasionally, until tender when pierced with a pairing knife, 20  25 minutes. (Meg note: I stood over the stove and had to use a large slotted spoon to twirl the eggplants in the boiling water to cook both sides since they decided to float. Perhaps this was unnecessary? Let me know how you got them to sink or if you just left them alone and they turned out ok.) Using a slotted spoon, transfer the eggplants to a colander to drain. Discard cooking water. When eggplants are cool enough to handle, about 15  20 minutes, halve eggplants lengthwise through the stem, but keeping the stem attached. With a small knife (Meg note: it is easier to cut around the edges of the eggplant with a pairing knife and use a spoon to scrape out the flesh), scoop out and reserve flesh, leaving 1/4-inch thick shells. Very finely chop flesh and transfer to a large bowl.</li><li>Bring rice and water to a boil in a 1-quart saucepan, uncovered, then reduce heat and simmer rice, covered, until water has be absorbed and rice is tender, about 15 minutes. Remove from heat and let stand for 5 minutes. Fluff rice with a fork and add to the chopped eggplant.</li><li>Add breadcrumbs to the rice and eggplant mixture along with the garlic, eggs, cheese, parsley, basil, 1/2 teaspoon salt, 1/2 teaspoon pepper and stir to combine well.</li><li>Sprinkle inside of eggplant shells with remaining 1/2 teaspoon of salt and 1/2 teaspoon pepper. Firmly pack the stuffing into the eggplant shells, about 1/3-cup. (You will probably have some stuffing leftover.)</li><li>Fry and bake eggplants: Position oven rack in the middle and preheat oven to 375F.</li><li>Heat 1-inch vegetable oil in a large 3  4 quart heavy skillet over medium heat until a thermometer reaches 320F and add 4  5 eggplant halves, stuffing side up. Fry, turning over once using 2 slotted spoons until golden brown, about 3  5 minutes on each side. Transfer stuffing side up to a paper towel lined plate to drain, then fry remaining eggplant halves in the same manner, returning oil to 320F between batches.</li><li>Spoon sauce into a 3-quart (139-inch) nonreactive baking dish. Add eggplants, stuffing sides up and bake, covered with foil, until sauce is bubbling, 20  30 minutes.</li><li>Serve.</li></ol>", spoonacular_id: 661967, image: "https://spoonacular.com/recipeImages/Stuffed-Baby-Eggplant-661967.jpg"}
+])
+User.create!([
+  {name: "nate", email: "nate@gmail.com", password_digest: "$2a$10$4gSUVfClee6sWC6PhE6CZODyjxobvl/1W02NfP5JOTJ5cgs4521hO", phone: "+13128524472"}
 ])
