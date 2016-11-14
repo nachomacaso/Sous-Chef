@@ -23,7 +23,7 @@
 }
 
 .ingredient-header {
-    background-image: image-url(<%= asset_path 'spice-header.jpg' %>);
+    background-image: url(<%= asset_path 'spice-header.jpg' %>);
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -31,7 +31,7 @@
 }
 
 #virtual-pantry {
-    background-image: linear-gradient(#161615, transparent), url(/assets/pantry-52e49737e5e433827e2594ca0f1aff616b2ac80cfb91d01a90b17eae99994ad7.jpg);
+    background-image: linear-gradient(#161615, transparent), url(<%= asset_path 'pantry.jpg' %>);
     padding: 50px 0;
     color: #fff;
     -webkit-background-size: cover;
