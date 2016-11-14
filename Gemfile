@@ -20,7 +20,6 @@ gem 'figaro'
 gem 'font-awesome-rails'
 gem 'vider', github: 'wazery/vider'
 gem 'twilio-ruby', '~> 4.13'
-gem 'rails_12factor', group: :production
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

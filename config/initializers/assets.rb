@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( live_w_locator.js )
 Rails.application.config.assets.precompile += %w( quagga.js )
+Rails.application.config.assets.precompile += %w( google_maps.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

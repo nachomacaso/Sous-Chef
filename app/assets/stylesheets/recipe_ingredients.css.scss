@@ -1,5 +1,5 @@
 .recipe-header {
-    background: linear-gradient(#161615, transparent), url(/assets/pasta.jpg) no-repeat;
+    background-image: image-url("pasta.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -8,7 +8,7 @@
 }
 
 .recipe-show-header {
-    background: linear-gradient(#161615, transparent), url(/assets/recipe-show-header.jpg) no-repeat;
+    background-image: image-url("recipe-show-header.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -37,6 +37,7 @@ p {
   width: 280px;
   padding: 0.5rem;
   position:relative;
+  background: #FFF;
   table {
     border-collapse: collapse;
   }
