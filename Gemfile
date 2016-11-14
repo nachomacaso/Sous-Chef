@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 gem 'unirest'
 gem 'figaro'
+gem 'rails_12factor', group: :production
 gem 'font-awesome-rails'
 gem 'vider', github: 'wazery/vider'
 gem 'twilio-ruby', '~> 4.13'
