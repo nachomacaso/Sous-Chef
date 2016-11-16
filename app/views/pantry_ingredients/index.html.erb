@@ -6,10 +6,10 @@
     <!-- Pantry tabs -->
       <ul class="nav nav-tabs  pantry-tabs" role="tablist">
         <li class="active">
-          <a href="#meat" aria-controls="meat" role="tab" data-toggle="tab" class="icon icon-home"><span>Meat</span></a>
+          <a href="#produce" aria-controls="produce" role="tab" data-toggle="tab" class="icon icon-home"><span>Produce</span></a>
         </li>
         <li>
-          <a href="#produce" aria-controls="produce" role="tab" data-toggle="tab">Produce</a>
+          <a href="#meat" aria-controls="meat" role="tab" data-toggle="tab">Meat</a>
         </li>
         <li>
           <a href="#spices" aria-controls="spices" role="tab" data-toggle="tab">Spices</a>
@@ -24,34 +24,7 @@
 
       <!-- Pantry Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active fade in" id="meat">
-          <div class="row">
-            <div class="pantry-group">
-              <div class="pantry-group-item clearfix col-lg-6 col-md-6 col-sm-12">
-                <% @pantry_ingredients.each do |pantry_ingredient| %>
-                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
-                    <span class="pantry-descp">
-                      <% if pantry_ingredient.ingredient.category_id == 9 %>
-                        <a href="/pantry/<%= pantry_ingredient.id %>">
-                        <% if pantry_ingredient.amount.to_i > 1 && pantry_ingredient.measurement.unit == " " %>
-                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.ingredient.name.pluralize %>
-                        <% elsif pantry_ingredient.amount.to_i > 1 %>
-                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.measurement.unit.pluralize %> <%= pantry_ingredient.ingredient.name %>  
-                        <% elsif pantry_ingredient.amount % 1 != 0 %>
-                          <%= Rational(pantry_ingredient.amount) %> <%= pantry_ingredient.measurement.unit %> <%= pantry_ingredient.ingredient.name %> 
-                        <% else %>
-                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.measurement.unit %> <%= pantry_ingredient.ingredient.name %>  
-                        <% end %>   
-                        </a>
-                      <% end %>
-                    </span>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade " id="produce">
+        <div class="tab-pane active fade in" id="produce">
           <div class="row">
             <div class="pantry-group">
               <div class="pantry-group-item clearfix col-lg-6 col-md-6 col-sm-12">
@@ -69,6 +42,33 @@
                         <% else %>
                           <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.measurement.unit %> <%= pantry_ingredient.ingredient.name %>  
                         <% end %>
+                        </a>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade " id="meat">
+          <div class="row">
+            <div class="pantry-group">
+              <div class="pantry-group-item clearfix col-lg-6 col-md-6 col-sm-12">
+                <% @pantry_ingredients.each do |pantry_ingredient| %>
+                  <div class="col-md-7 col-lg-7 col-sm-7 col-xs-9">
+                    <span class="pantry-descp">
+                      <% if pantry_ingredient.ingredient.category_id == 9 %>
+                        <a href="/pantry/<%= pantry_ingredient.id %>">
+                        <% if pantry_ingredient.amount.to_i > 1 && pantry_ingredient.measurement.unit == " " %>
+                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.ingredient.name.pluralize %>
+                        <% elsif pantry_ingredient.amount.to_i > 1 %>
+                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.measurement.unit.pluralize %> <%= pantry_ingredient.ingredient.name %>  
+                        <% elsif pantry_ingredient.amount % 1 != 0 %>
+                          <%= Rational(pantry_ingredient.amount) %> <%= pantry_ingredient.measurement.unit %> <%= pantry_ingredient.ingredient.name %> 
+                        <% else %>
+                          <%= pantry_ingredient.amount.to_i %> <%= pantry_ingredient.measurement.unit %> <%= pantry_ingredient.ingredient.name %>  
+                        <% end %>   
                         </a>
                       <% end %>
                     </span>

@@ -51,9 +51,14 @@
 
 html, body {
     font-family: 'Roboto', "Helvetica Neue",Helvetica,Arial,sans-serif;
-    height: 100%;
-    margin: 0;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
     padding: 0;
+    content: "";
+    display: table;
+    clear: both;
+    overflow:visible;
 }
 
 button {
@@ -152,6 +157,7 @@ h2 {
 
 /* Main Menu Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 
 .main-menu {
     text-align: center;
@@ -687,8 +693,17 @@ figure.item:hover img {
     text-align: center;
 }
 
+.container {
+    margin: 0 auto;
+}
+
 #ingredient-show {
-    height: 100%;
+    /*height: auto%;*/
+    width:100%;
+    clear:both;
+    /*display: table;*/
+    /*content:"";*/
+    margin: 0 auto;
 }
 
 .ingredient-header p {
@@ -795,8 +810,14 @@ footer {
     padding: 18px;
     text-align: center;
     width: 100%;
-    bottom: 0;
-    left: 0;
+    min-height:100%;
+    margin: 0 auto;
+    clear: both;
+    display:block;
+    position:relative;
+    overflow:visible;
+    /*bottom: 0;*/
+    /*left: 0;*/
 }
 
 footer p {
