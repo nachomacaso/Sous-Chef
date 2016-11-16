@@ -50,7 +50,7 @@ $(function() {
                 $ul = $("#result_strip ul.collector");
 
             results.forEach(function(result) {
-                var $li = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+                var $li = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption-ingredient"><h4 class="code"></h4></div></div></li>');
 
                 $li.find("img").attr("src", result.frame);
                 $li.find("h4.code").html(result.codeResult.code + " (" + result.codeResult.format + ")");
