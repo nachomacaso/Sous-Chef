@@ -1,0 +1,18 @@
+<%= javascript_include_tag 'google_maps' %>
+
+<section id="grocery-show">
+  <div class="grocery-show-header">
+    <div class="container">
+      <div class="col-sm-6 f-n center-block">
+        <h2>Grocery stores near me</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container grocery-container">
+    <div id="map"></div>
+  </div>
+
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps'] %>&libraries=places&callback=initMap" async defer></script>

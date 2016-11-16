@@ -12,6 +12,6 @@ class SendTextController < ApplicationController
       body: "Thanks for using Sous-Chef!  Here are the ingredients your are missing:  #{params[:body]}"
     }) 
 
-    redirect_to "/recipes"
+    redirect_to "/grocery"
   end
 end

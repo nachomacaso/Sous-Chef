@@ -1,5 +1,5 @@
 .recipe-header {
-    background-image: url(<%= asset_path 'pasta.jpg' %>);
+    background-image: linear-gradient(#161615, transparent), url('pasta.jpg');
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -8,7 +8,7 @@
 }
 
 .recipe-show-header {
-    background-image: url(<%= asset_path 'recipe-show-header.jpg' %>);
+    background-image: url('recipe-show-header.jpg');
     -webkit-background-size: cover;
     background-size: cover;
     padding: 50px 0;
@@ -97,6 +97,11 @@ p {
       }
     }
   }
+}
+
+.alert {
+  height: 100px;
+  padding-bottom: 0px;
 }
 
 .text-center {

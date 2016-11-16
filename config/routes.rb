@@ -25,5 +25,5 @@ Rails.application.routes.draw do
 
   post '/send_sms' => 'send_text#trigger_sms_message'
 
-  get '/grocery' => 'grocery#grocery_map'
+  get '/grocery' => 'grocery_map#grocery_show'
 end

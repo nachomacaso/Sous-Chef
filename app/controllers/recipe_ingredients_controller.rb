@@ -53,11 +53,12 @@ class RecipeIngredientsController < ApplicationController
                                                cook_book_id: user_cookbook.id,
                                                rating: params[:rating])
 
-    if @user_saved_recipe
+    if @user_saved_recipe.rating != nil
       flash[:success] = 'Successfully added a new recipe to cook book!'
       redirect_to '/cookbook'
     else
-      flash[:danger] = 'Recipe not saved!'
+      flash[:danger] = 'Recipe not saved! Please rate the recipe!'
+      cook_book_recipe.destroy
       redirect_to '/recipes'
     end
   end
@@ -102,12 +103,12 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def destroy
-    recipe = Recipe.find_by(spoonacular_id: params[:id])
-    user_removed_cookbook = CookBookRecipe.find_by(recipe_id: recipe.id)
+    user_removed_recipe = Recipe.find_by(spoonacular_id: params[:id])
+    user_removed_cookbook = CookBookRecipe.find_by(recipe_id: user_removed_recipe.id)
     user_removed_cookbook.destroy
-    recipe.destroy
+    user_removed_recipe.destroy
 
-    if user_removed_cookbook
+    if user_removed_cookbook && user_removed_recipe
       flash[:success] = 'Successfully removed recipe from cook book!'
       redirect_to "/cookbook"
     else
