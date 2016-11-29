@@ -30,11 +30,11 @@ function initMap() {
               ],
               {name: 'Styled Map'});
 
-  var pyrmont = {lat: 41.8885, lng: -87.6354};
+  var pyrmont = {lat: 42.0257, lng: -88.1989};
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
-    zoom: 16
+    zoom: 15
   });
 
   //Associate the styled map with the MapTypeId and set it to display.
