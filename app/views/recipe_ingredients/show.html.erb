@@ -154,14 +154,13 @@
           <% end %>
         <% end %>
         <br>
-        <% unless @missing_ingredients.nil? %>
+        <% unless @missing_ingredients.count <= 1 %>
           <%= form_tag "/send_sms", method: :post do %>
             <%= hidden_field_tag :to, @current_user.phone %>
             <%= hidden_field_tag :body, @missing_ingredients.join(", ") %>
             <%= submit_tag 'Text Missing Ingredients', class:"btn btn-info" %>
           <% end %>
         <% end %>
-        <br>
       </div>
     </div>
   </div>
