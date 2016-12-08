@@ -1,4 +1,10 @@
 $(document).ready(function(){
+  $('.barcode').hide();
+
+  $('.clickme').click(function() {
+    $('.barcode').toggle();
+  });
+
   $("button.btn-barcode").click(function(){
     var barcode = $("h4.code").html();
     $.ajax({
