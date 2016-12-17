@@ -50,16 +50,17 @@
 
           <%= submit_tag 'Add To Pantry', class: "btn btn-block btn-primary" %>
         <% end %>
+        <br>
+        <button class="clickme btn btn-block btn-primary">Display Barcode Scanner</button>
       </div> <!-- Ingredient form ends -->
       
-      <h5 class="clickme">Barcode Scanner</h5>
       <div class="col-md-7 barcode">
         <div id="interactive" class="viewport"></div>
         <div class="controls">
           <div id="result_strip">
             <ul class="thumbnails"></ul>
             <ul class="collector"></ul>
-            <button class="btn btn-barcode">Lookup UPC</button>
+            <button class="btn btn-block btn-barcode">Lookup UPC</button>
           </div>
             <fieldset class="reader-config-group">
                 <label>
