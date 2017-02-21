@@ -6,7 +6,6 @@ Rails.application.configure do
 
   # Added for Heroku
   config.public_file_server.enabled = true
-  config.serve_static_files = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
