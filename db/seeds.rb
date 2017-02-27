@@ -1,3 +1,6 @@
+User.create!([
+  {name: "test", email: "test@gmail.com", password_digest: "$2a$10$O8Q4VuNhnwmv1qxQ3SnJ6.a7Y3UIp.rj4w1ewYFOzeh1Cld9ud7tG", phone: "+13128524472"}
+])
 Category.create!([
   {aisle: "Milk, Eggs, Other Dairy"},
   {aisle: "Oil, Vinegar, Salad Dressing"},
@@ -8,19 +11,6 @@ Category.create!([
   {aisle: "Canned and Jarred"},
   {aisle: "Cheese"},
   {aisle: "Meat"}
-])
-CookBook.create!([
-  {user_id: 1}
-])
-CookBookRecipe.create!([
-  {cook_book_id: 1, rating: 5, recipe_id: 1},
-  {cook_book_id: 1, rating: 4, recipe_id: 8},
-  {cook_book_id: 1, rating: 5, recipe_id: 12},
-  {cook_book_id: 1, rating: 5, recipe_id: 16},
-  {cook_book_id: 1, rating: 5, recipe_id: 17},
-  {cook_book_id: 1, rating: 5, recipe_id: 19},
-  {cook_book_id: 1, rating: 5, recipe_id: 20},
-  {cook_book_id: 1, rating: 1, recipe_id: 26}
 ])
 Ingredient.create!([
   {name: "Olive Oil", category_id: 2},
@@ -161,6 +151,16 @@ Recipe.create!([
   {name: "Baked Ziti Casserole", directions: "<ol><li>1. Peel the eggplants. Cut into 1/8-inch-thick slices, sprinkle with salt and put in a colander to drain. Pat dry. Slice the zucchini.</li><li>2. In a skillet, heat 1/4 cup olive oil and fry the eggplant and zucchini until browned on both sides. Take them out of the pan and drain on paper towels.</li><li>Lowfat Variation: spray eggplant and zucchini with olive oil and bake at 450F until brown. about 15 mins.</li><li>3. Cook the ziti in boiling salted water. Drain and set aside.</li><li>4. In a saucepan, heat the remaining 1/4 cup oil. Add the onion and cook until translucent. Add the garlic and cook for 2 minutes. Add the tomatoes, basil, parsley, salt and pepper. Simmer uncovered for 20 minutes. Pour into the bowl with the drained ziti.</li><li>5. Rub two shallow baking pans with olive oil. In the first pan, put 1/4 of the ziti, then 1/4 of the eggplant and zucchini. Dot with butter, add 1/4 of the mozzarella and then 1/4 of the Parmesan. Repeat the layers in that pan and do the same in the second pan.</li><li>6. Bake one of the pans in a 350-degree oven for 30 minutes until the top is brown and crusty. Cover the other pan tightly with aluminum foil and freeze. Defrost before baking. Each pan will make 4 to 6 servings.</li><li>Yield: \"2 packages\"</li><li>NOTES : Here's a casserole to make from scratch when you have the time. Then freeze half the recipe, and you'll have a homemade frozen dinner another night.</li></ol>", spoonacular_id: 633883, image: "https://spoonacular.com/recipeImages/Baked-Ziti-Casserole-633883.jpg"},
   {name: "Chicken with Cherry Tomato Heavy Cream Sauce", directions: "<ol><li>1. Season chicken with salt and pepper. Dip each piece into panko, patting the crumbs down so they stick well.</li><li>2. In a bowl combine butter, garlic oregano and paprika. Mix until smooth. Add salt and pepper to taste.</li><li>3. Over medium-high heat add 1 tablespoon butter and 2 tablespoons olive oil. Add chicken, in a single layer and cook until lightly browned on each side (3-5 minutes per side). Remove chicken from skillet and loosely cover with aluminum foil.</li><li>4. Add onion to the pan and cook until translucent, a few minutes. Remove.</li><li>5. Increase heat to high and add tomatoes. Cook for 5 minutes, stirring occasionally, until tomatoes are slightly charred, add remaining butter, and then using a spoon lightly push down on the tomatoes to release the juices.</li><li>6. Reduce heat to medium-low, add heavy cream to pan, stirring to incorporate tomatoes. Cook for 1-2 minutes more.</li><li>7. To serve slice chicken breasts, top with tomato cream sauce and fresh chopped parsley.</li></ol>", spoonacular_id: 638431, image: "https://spoonacular.com/recipeImages/Chicken-with-Cherry-Tomato-Heavy-Cream-Sauce-638431.jpg"}
 ])
-User.create!([
-  {name: "test", email: "test@gmail.com", password: "password", phone: "+13128524472"}
+CookBook.create!([
+  {user_id: 1}
+])
+CookBookRecipe.create!([
+  {cook_book_id: 1, rating: 5, recipe_id: 1},
+  {cook_book_id: 1, rating: 4, recipe_id: 8},
+  {cook_book_id: 1, rating: 5, recipe_id: 12},
+  {cook_book_id: 1, rating: 5, recipe_id: 16},
+  {cook_book_id: 1, rating: 5, recipe_id: 17},
+  {cook_book_id: 1, rating: 5, recipe_id: 19},
+  {cook_book_id: 1, rating: 5, recipe_id: 20},
+  {cook_book_id: 1, rating: 1, recipe_id: 26}
 ])

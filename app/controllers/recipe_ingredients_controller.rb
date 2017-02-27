@@ -7,35 +7,40 @@ class RecipeIngredientsController < ApplicationController
   def index
     @url_string = ""
     user_pantry_ingredients = PantryIngredient.where(user_id: current_user.id)
-    @array_length = user_pantry_ingredients.length
-    counter = 0
-    user_pantry_ingredients.each do |user_pantry_ingredient|
-      counter += 1
-      if counter == @array_length
-        @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase
-      else
-        @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase + '%2C'
-      end
-    end
-    @url_string = @url_string.squish.tr(' ', '+')
-
-    @recipes = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=true&ingredients=#{@url_string}&limitLicense=true&number=1000&ranking=1",
-                           headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
-
-    @green_light_recipes = []
-    @yellow_light_recipes = []
-
-    @recipes.each do |recipe|
-      if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length <= 3
-        unless recipe["image"].nil?
-          @green_light_recipes << recipe
-        end
-      elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.50 && recipe["missedIngredients"].length <= 5
-        unless recipe["image"].nil? 
-          @yellow_light_recipes << recipe
-          @yellow_missing = recipe["missedIngredients"].length
+    if user_pantry_ingredients.any?
+      @array_length = user_pantry_ingredients.length
+      counter = 0
+      user_pantry_ingredients.each do |user_pantry_ingredient|
+        counter += 1
+        if counter == @array_length
+          @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase
+        else
+          @url_string = @url_string + user_pantry_ingredient.ingredient.name.downcase + '%2C'
         end
       end
+      @url_string = @url_string.squish.tr(' ', '+')
+
+      @recipes = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=true&ingredients=#{@url_string}&limitLicense=true&number=1000&ranking=1",
+                             headers: {"X-Mashape-Key" => "#{ ENV["mashape_key"]}", "Accept" => "application/json"}).body
+
+      @green_light_recipes = []
+      @yellow_light_recipes = []
+
+      @recipes.each do |recipe|
+        if recipe["missedIngredientCount"].zero? && recipe["missedIngredients"].length <= 3
+          unless recipe["image"].nil?
+            @green_light_recipes << recipe
+          end
+        elsif (recipe["usedIngredients"].length.to_f / (recipe["usedIngredients"].length + recipe["missedIngredients"].length)) >= 0.50 && recipe["missedIngredients"].length <= 5
+          unless recipe["image"].nil? 
+            @yellow_light_recipes << recipe
+            @yellow_missing = recipe["missedIngredients"].length
+          end
+        end
+      end
+    else
+      flash[:danger] = 'You need to add more ingredients to you pantry!'
+      redirect_to '/pantry/new'
     end
   end
 
