@@ -414,25 +414,6 @@ h2 {
     min-height: 600px;
 }
 
-.photo-container{
-        position: absolute;
-    height: 100%;
-    top: 0px;
-    left:0;
-}
-
-.background-image-holder{
-    width: 425px;
-    height: 100%;
-    z-index: 0;
-    background-size: cover !important;
-    top: -20%;
-}
-.divider-background {
-    background-size: cover !important;
-    overflow: hidden;
-}
-
 
 /* Virtual Pantry Section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

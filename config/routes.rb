@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
   get '/' => 'recipe_ingredients#home'
 
   get '/pantry' => 'pantry_ingredients#index'
@@ -15,13 +19,6 @@ Rails.application.routes.draw do
   delete '/recipes/:id' => 'recipe_ingredients#destroy'
 
   get '/cookbook' => 'cook_book_recipes#index'
-
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
 
   post '/send_sms' => 'send_text#trigger_sms_message'
 

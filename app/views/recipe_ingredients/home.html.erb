@@ -8,7 +8,9 @@
         <div class="caption-video">
           <h2>Sous-Chef</h2>
           <p>FIND USEFUL RECIPES</p>
-          <a href="/recipes" class="smooth-scroll btn btn-primary btn-sm">Allez Cuisine</a>
+          <% unless current_user %>
+            <a href="/users/sign_up " class="smooth-scroll btn btn-primary btn-sm">Sign Up</a>
+          <% end %>
         </div>
         </li>
 
@@ -17,7 +19,9 @@
         <div class="caption-video">
           <h2>Sous-Chef</h2>
           <p>USING THE INGREDIENTS YOU ALREADY HAVE</p>
-          <a href="/recipes" class="btn btn-primary btn-sm">Allez Cuisine</a>
+          <% unless current_user %>
+            <a href="/users/sign_in" class="btn btn-primary btn-sm">Login</a>
+          <% end %>
         </div>
         </li>
       </ul>
@@ -26,10 +30,10 @@
 
 <!-- About section starts -->
 <section id="about" class="container-fluid">
-  <div class="photo-container col-lg-4 hidden-sm hidden-xs divider-background p-l-n">
-    <div class="background-image-holder">
-      <%= image_tag "chef.jpg", class: "chef-img"%>
-    </div>
+  <div class="col-lg-4 hidden-sm hidden-xs history">
+    <iframe width="500" height="300" src="https://www.youtube.com/embed/bSzlRuYfamE" frameborder="0" allowfullscreen></iframe>
+    <h3>How it works</h3>
+    <p>Each user has a customizable virtual pantry.  Sous-Chef then gives you a list of recipes where you have 100% and 75% of the ingredients.</p>
   </div>
   <div class="row">
     <div class="container">

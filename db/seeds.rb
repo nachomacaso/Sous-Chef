@@ -1,5 +1,5 @@
 User.create!([
-  {name: "test", email: "test@gmail.com", password_digest: "$2a$10$O8Q4VuNhnwmv1qxQ3SnJ6.a7Y3UIp.rj4w1ewYFOzeh1Cld9ud7tG", phone: "+13128524472"}
+  {name: "test", email: "test@gmail.com", password: "password", password_confirmation: "password", phone: "+13128524472"}
 ])
 Category.create!([
   {aisle: "Milk, Eggs, Other Dairy"},

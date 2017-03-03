@@ -78,10 +78,10 @@
           <li class="pushy-link"><a href="/pantry/new">Add Ingredient</a></li>
           <li role="seperator" class="divider"></li>
           <% if current_user %>
-            <li><%= link_to 'Log Out', '/logout', method: :delete %></a></li>
+            <li><%= link_to 'Log Out', '/users/sign_out', method: :delete %></a></li>
           <% else %>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login">Log In</a></li>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+            <li><a href="/users/sign_in">Log In</a></li>
           <% end %>
         </ul>
 
@@ -113,7 +113,7 @@
         <!-- Footer starts -->
         <footer>
             <div class="container">
-                <p>© Copyright 2016 Sous-Chef. All Rights Reserved.</p>
+                <p><%= link_to "nachomacaso",  "http://nathan-macaso.herokuapp.com" %> | © Copyright 2016 Sous-Chef. All Rights Reserved.</p>
             </div>
         </footer> <!-- Footer ends -->
     </div> <!-- Main body ends -->
